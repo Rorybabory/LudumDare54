@@ -11,8 +11,8 @@ public class SoundEffect {
     public bool
         sequential = false,
         overlap = true,
-        loop = false,
-        finishPlayingBeforeDestroy = true;
+        loop = false;
+        //finishPlayingBeforeDestroy = true;
 
     internal AudioSource source;
 

@@ -207,7 +207,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -387,10 +387,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cfe4b90e0cb42a985975d8a5101758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 20
-  accel: 200
-  deccel: 200
-  cameraSensitivity: {x: 2, y: 2}
+  runSpeed: 17
+  groundAccel: 300
+  groundDeccel: 300
+  airAccel: 150
+  airDeccel: 150
+  initialStepDelay: 0.15
+  stepSoundFrequency: 0.3
+  stepSound:
+    clip:
+    - {fileID: 8300000, guid: 456a93f0aca39414b82b2152d181fa79, type: 3}
+    volume: 0.1
+    minPitch: 1
+    maxPitch: 1
+    sequential: 0
+    overlap: 1
+    loop: 0
+  jumpHeight: 4
+  jumpBoostPercent: 0.5
+  gravity: 40
+  maxFallSpeed: 30
+  jumpSound:
+    clip:
+    - {fileID: 8300000, guid: c49666bd72345e84eba4669e046849b9, type: 3}
+    volume: 0.5
+    minPitch: 1
+    maxPitch: 1
+    sequential: 0
+    overlap: 1
+    loop: 0
+  maxJumps: 2
+  jumpBuffer:
+    threshold: 0.1
+  dashVelocity: 80
+  dashDuration: 0.15
+  dashCooldown: 0.5
+  dashBuffer:
+    threshold: 0.1
+  cameraSensitivity: {x: 1.5, y: 1.5}
   cameraPivot: {fileID: 8338417951328117507}
   groundCheckPosition: {fileID: 7748555390932164919}
   groundCheckRadius: 0.3

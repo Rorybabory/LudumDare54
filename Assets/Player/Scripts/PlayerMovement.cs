@@ -6,8 +6,21 @@ public class PlayerMovement : MonoBehaviour {
 
     [Header("Running")]
     [SerializeField] private float runSpeed;
-    [SerializeField] private float accel, deccel;
+    [SerializeField] private float groundAccel, groundDeccel, airAccel, airDeccel, initialStepDelay, stepSoundFrequency;
+    [SerializeField] private SoundEffect stepSound;
+
+    [Header("Jumping")]
+    [SerializeField] private float jumpHeight;
+    [SerializeField] private float jumpBoostPercent, gravity, maxFallSpeed;
     [SerializeField] private SoundEffect jumpSound;
+    [SerializeField] private int maxJumps;
+    [SerializeField] private BufferTimer jumpBuffer;
+
+    [Header("Dashing")]
+    [SerializeField] private float dashVelocity;
+    [SerializeField] private float dashDuration, dashCooldown;
+    [SerializeField] private BufferTimer dashBuffer;
+    [SerializeField] private SoundEffect dashSound;
 
     [Header("Camera")]
     [SerializeField] private Vector2 cameraSensitivity;
@@ -22,57 +35,112 @@ public class PlayerMovement : MonoBehaviour {
     private new Rigidbody rigidbody;
     private StateMachine stateMachine;
 
+    private int jumpsRemaining;
+    private float dashCooldownTimer;
+
     // state machine blackboard
     private Vector2Int inputDir;
     private Vector2 inputDirNormalized;
+    private bool jumpDown;
+    private bool dashDown;
     private bool onGround;
 
-    private Collider[] overlapSphereColliders;
+    private Collider[] overlapSphereColliders = new Collider[1];
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(groundCheckPosition.position, groundCheckRadius);
+    }
 
     private void Awake() {
+
         rigidbody = GetComponent<Rigidbody>();
 
         InitializeStateMachine();
         stateMachine.Reset();
     }
 
+    private void Start() {
+
+        foreach (var sound in new[] {
+            jumpSound,
+            stepSound,
+            dashSound,
+        })
+            sound.Init(gameObject);
+    }
+
     private void Update() {
 
+        // input
         Vector2 mouseDelta = new(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         inputDir = new(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal")), Mathf.RoundToInt(Input.GetAxisRaw("Vertical")));
         inputDirNormalized = ((Vector2)inputDir).normalized;
+        jumpDown = jumpBuffer.Buffer(Input.GetKeyDown(KeyCode.Space));
+        dashDown = dashBuffer.Buffer(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift));
 
+        // cursor state
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        // camera movement
         cameraRotation += new Vector2(-mouseDelta.y, mouseDelta.x) * cameraSensitivity;
+        cameraRotation.x = Mathf.Clamp(cameraRotation.x, -90, 90);
 
+        // setting camera rotation
         cameraPivot.localEulerAngles = Vector3.right * cameraRotation.x;
         transform.eulerAngles = Vector3.up * cameraRotation.y;
 
+        // ground check
         bool GroundCheck(Transform origin, float radius) => Physics.OverlapSphereNonAlloc(origin.position, radius, overlapSphereColliders, groundMask) > 0;
-        onGround = GroundCheck(groundCheckPosition, groundCheckRadius);
+        onGround = GroundCheck(groundCheckPosition, groundCheckRadius) && rigidbody.velocity.y <= 0;
 
+        // dash cooldown
+        dashCooldownTimer += Time.deltaTime;
+
+        // state machine (!!! WOW AMAZING !!!)
         stateMachine.Update();
     }
 
-    private Running running;
+    private Running     running;
+    private Grounded    grounded;
+    private Falling     falling;
+    private Dashing     dashing;
 
     private void InitializeStateMachine() {
 
-        running = new(this);
+        running     = new(this);
+        grounded    = new(this, running);
+        falling     = new(this, running);
+        dashing     = new(this);
 
         Transition
-            jump = new(null, () => false);
+            jump            = new(falling,  () => jumpDown && jumpsRemaining > 0, Jump),
+            groundToFall    = new(falling,  () => !onGround),
+            toGounded       = new(grounded, () => onGround),
+            enterDash       = new(dashing,  () => dashDown && dashCooldownTimer > dashCooldown),
+            endDash         = new(falling,  () => stateMachine.stateDuration > dashDuration);
 
         Dictionary<State, List<Transition>> transitions = new() {
 
-            { running, new() {
-                new(null, () => false)
-            } }
+            { grounded, new() {
+                jump,
+                groundToFall,
+                enterDash,
+            } },
+
+            { falling, new() {
+                toGounded,
+                jump,
+                enterDash,
+            } },
+
+            { dashing, new() {
+                endDash,
+            } },
         };
 
-        stateMachine = new(this, transitions, running);
+        stateMachine = new(this, transitions, grounded);
     }
 
     [System.Serializable]
@@ -80,32 +148,142 @@ public class PlayerMovement : MonoBehaviour {
 
         public Running(PlayerMovement vars) : base(vars) { }
 
-        private Vector3 localVel;
-        private Vector2 hVel {
+        private Vector3 localVel {
+            get => vars.transform.InverseTransformDirection(vars.rigidbody.velocity);
+            set => vars.rigidbody.velocity = vars.transform.TransformDirection(value);
+        }
+        public Vector2 hVel {
             get => new(localVel.x, localVel.z);
-            set => localVel = new(value.x, 0, value.y);
+            set => localVel = new(value.x, localVel.y, value.y);
+        }
+        public float yVel {
+            get => localVel.y;
+            set {
+                Vector3 vel = localVel;
+                vel.y = value;
+                localVel = vel;
+            }
         }
 
         public override void Update() {
 
             bool inputting = vars.inputDir != Vector2Int.zero;
 
-            (Vector2 dir, float targetSpeed, float accel) = inputting
-                ? (vars.inputDirNormalized, vars.runSpeed, vars.accel)
-                : (hVel.normalized, 0, vars.deccel);
+            (float maxSpeed, float accel, float deccel) = vars.onGround
+                ? (vars.runSpeed, vars.groundAccel, vars.groundDeccel)
+                : (Mathf.Max(vars.runSpeed, hVel.magnitude), vars.airAccel, vars.airDeccel);
 
-            hVel = dir * Mathf.MoveTowards(localVel.magnitude, targetSpeed, accel * Time.deltaTime);
+            (Vector2 targetSpeed, float velDelta) = inputting
+                ? (vars.inputDirNormalized * maxSpeed, accel)
+                : (Vector2.zero, deccel);
+
+            hVel = Vector2.MoveTowards(hVel, targetSpeed, velDelta * Time.deltaTime);
 
             vars.rigidbody.velocity = vars.transform.TransformDirection(localVel);
+
+            base.Update();
         }
     }
 
-    private class Grounded : SubState<Running> {
+    private class RunningSubState : SubState<Running> {
+        public RunningSubState(PlayerMovement vars, Running running) : base(vars, running) { }
+    }
+
+    private class Grounded : RunningSubState {
 
         public Grounded(PlayerMovement vars, Running running) : base(vars, running) { }
 
+        private float timeSinceStep;
 
+        public override void Enter() {
+
+            base.Enter();
+
+            vars.jumpsRemaining = vars.maxJumps;
+        }
+
+        public override void Update() {
+
+            if (vars.inputDir != Vector2Int.zero) {
+
+                timeSinceStep += Time.deltaTime;
+
+                if (timeSinceStep > vars.stepSoundFrequency) {
+                    timeSinceStep = 0;
+                    vars.stepSound.Play();
+                }
+            }
+            else timeSinceStep = vars.stepSoundFrequency - vars.initialStepDelay;
+
+
+            base.Update();
+        }
     }
+
+    private class Falling : RunningSubState{
+
+        public Falling(PlayerMovement vars, Running running) : base(vars, running) { }
+
+        public override void Enter() {
+
+            base.Enter();
+
+            vars.jumpsRemaining--;
+        }
+
+        public override void Update() {
+
+            superState.yVel = Mathf.Max(-vars.maxFallSpeed, superState.yVel - vars.gravity * Time.deltaTime);
+
+            base.Update();
+        }
+    }
+
+    private class Dashing : State {
+
+        public Dashing(PlayerMovement vars) : base(vars) { }
+
+        private Vector3 dashVel;
+
+        public override void Enter() {
+
+            base.Enter();
+
+            vars.dashSound.Play();
+
+            vars.dashCooldownTimer = 0;
+
+            Vector2 dir = vars.inputDir != Vector2Int.zero ? vars.inputDirNormalized : Vector2.up;
+
+            dashVel = vars.transform.TransformDirection(new Vector3(dir.x, 0, dir.y)) * vars.dashVelocity;
+
+            vars.rigidbody.velocity += dashVel;
+        }
+
+        public override void Exit() {
+
+            vars.rigidbody.velocity -= dashVel;
+
+            base.Exit();
+        }
+    }
+
+    private void Jump() {
+
+        jumpSound.Play();
+
+        onGround = false;
+        jumpBuffer.Reset();
+
+        float jumpForce = Mathf.Sqrt(jumpHeight * gravity * 2);
+
+        Vector3 vel = rigidbody.velocity;
+        vel.y = jumpForce;
+        if (inputDir != Vector2Int.zero) vel += transform.TransformDirection(new Vector3(inputDirNormalized.x, 0, inputDirNormalized.y)) * jumpForce * jumpBoostPercent;
+        rigidbody.velocity = vel;
+    }
+
+    #region State Machine
 
     private delegate bool CanTransition();
     private delegate void TransitionBehavior();
@@ -214,4 +392,6 @@ public class PlayerMovement : MonoBehaviour {
             => (exists, this.toState, this._canTransition, this.behavior)
             =  (true, toState, () => true, behavior);
     }
+
+    #endregion
 }
