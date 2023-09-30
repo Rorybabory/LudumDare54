@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     [Header("Running")]
     [SerializeField] private float runSpeed;
     [SerializeField] private float accel, deccel;
+    [SerializeField] private SoundEffect jumpSound;
 
     [Header("Camera")]
     [SerializeField] private Vector2 cameraSensitivity;
