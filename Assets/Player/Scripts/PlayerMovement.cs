@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     [Header("Running")]
-    [SerializeField] private float movementSpeed;
+    [SerializeField] private float runSpeed;
     [SerializeField] private float accel, deccel;
 
     [Header("Camera")]
@@ -18,38 +18,92 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private LayerMask groundMask;
 
     private Vector2 cameraRotation;
+    private new Rigidbody rigidbody;
+    private StateMachine stateMachine;
+
+    // state machine blackboard
+    private Vector2Int inputDir;
+    private Vector2 inputDirNormalized;
+    private bool onGround;
 
     private Collider[] overlapSphereColliders;
 
+    private void Awake() {
+        rigidbody = GetComponent<Rigidbody>();
+
+        InitializeStateMachine();
+        stateMachine.Reset();
+    }
+
     private void Update() {
+
+        Vector2 mouseDelta = new(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        inputDir = new(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal")), Mathf.RoundToInt(Input.GetAxisRaw("Vertical")));
+        inputDirNormalized = ((Vector2)inputDir).normalized;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        cameraRotation += new Vector2(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X")) * cameraSensitivity;
+        cameraRotation += new Vector2(-mouseDelta.y, mouseDelta.x) * cameraSensitivity;
 
         cameraPivot.localEulerAngles = Vector3.right * cameraRotation.x;
         transform.eulerAngles = Vector3.up * cameraRotation.y;
 
         bool GroundCheck(Transform origin, float radius) => Physics.OverlapSphereNonAlloc(origin.position, radius, overlapSphereColliders, groundMask) > 0;
-        bool onGround = GroundCheck(groundCheckPosition, groundCheckRadius);
+        onGround = GroundCheck(groundCheckPosition, groundCheckRadius);
 
-
+        stateMachine.Update();
     }
+
+    private Running running;
 
     private void InitializeStateMachine() {
 
+        running = new(this);
 
+        Transition
+            jump = new(null, () => false);
+
+        Dictionary<State, List<Transition>> transitions = new() {
+
+            { running, new() {
+                new(null, () => false)
+            } }
+        };
+
+        stateMachine = new(this, transitions, running);
     }
 
-    private class Grounded : State {
+    [System.Serializable]
+    private class Running : State {
 
-        public Grounded(PlayerMovement vars) : base(vars) { }
+        public Running(PlayerMovement vars) : base(vars) { }
 
-        public override void Enter() {
-
-
+        private Vector3 localVel;
+        private Vector2 hVel {
+            get => new(localVel.x, localVel.z);
+            set => localVel = new(value.x, 0, value.y);
         }
+
+        public override void Update() {
+
+            bool inputting = vars.inputDir != Vector2Int.zero;
+
+            (Vector2 dir, float targetSpeed, float accel) = inputting
+                ? (vars.inputDirNormalized, vars.runSpeed, vars.accel)
+                : (hVel.normalized, 0, vars.deccel);
+
+            hVel = dir * Mathf.MoveTowards(localVel.magnitude, targetSpeed, accel * Time.deltaTime);
+
+            vars.rigidbody.velocity = vars.transform.TransformDirection(localVel);
+        }
+    }
+
+    private class Grounded : SubState<Running> {
+
+        public Grounded(PlayerMovement vars, Running running) : base(vars, running) { }
+
+
     }
 
     private delegate bool CanTransition();
