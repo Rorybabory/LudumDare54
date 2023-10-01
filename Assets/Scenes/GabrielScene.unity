@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0058477116, g: 0.0055022934, b: 0.0034567406, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -284,6 +284,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 901b0ced5e7bcc74d972dafc3f4c5327, type: 3}
+--- !u!1001 &406014387
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -216.86784
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 134.46922
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -194.68788
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870378566281840403, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_Name
+      value: SoulTemple
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73d998163f81a804fbe97bde4f0eeefc, type: 3}
 --- !u!1001 &407965601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -457,6 +525,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &443578314
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 355.3817
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -65.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 455.7995
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870378566281840403, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_Name
+      value: SoulTemple (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73d998163f81a804fbe97bde4f0eeefc, type: 3}
 --- !u!1 &541004459
 GameObject:
   m_ObjectHideFlags: 0
@@ -5568,6 +5704,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1383411827
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5792038572483674989, guid: f5952b977adac1f468e0d0a127e84041,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 162.07498
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792038572483674989, guid: f5952b977adac1f468e0d0a127e84041,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -65.10004
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792038572483674989, guid: f5952b977adac1f468e0d0a127e84041,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 456.49182
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792038572483674989, guid: f5952b977adac1f468e0d0a127e84041,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792038572483674989, guid: f5952b977adac1f468e0d0a127e84041,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792038572483674989, guid: f5952b977adac1f468e0d0a127e84041,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792038572483674989, guid: f5952b977adac1f468e0d0a127e84041,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792038572483674989, guid: f5952b977adac1f468e0d0a127e84041,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792038572483674989, guid: f5952b977adac1f468e0d0a127e84041,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792038572483674989, guid: f5952b977adac1f468e0d0a127e84041,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569244187469830615, guid: f5952b977adac1f468e0d0a127e84041,
+        type: 3}
+      propertyPath: m_Name
+      value: CurseFlameTemple
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f5952b977adac1f468e0d0a127e84041, type: 3}
 --- !u!1 &1472819003
 GameObject:
   m_ObjectHideFlags: 0
@@ -5773,6 +5977,74 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1001 &1664256549
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -316.04346
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -51.826385
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 352.51938
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350864151669087657, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870378566281840403, guid: 73d998163f81a804fbe97bde4f0eeefc,
+        type: 3}
+      propertyPath: m_Name
+      value: SoulTemple (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73d998163f81a804fbe97bde4f0eeefc, type: 3}
 --- !u!1 &1764736953
 GameObject:
   m_ObjectHideFlags: 0
@@ -6043,3 +6315,7 @@ SceneRoots:
   - {fileID: 407965601}
   - {fileID: 294950936}
   - {fileID: 2544621734843924213}
+  - {fileID: 406014387}
+  - {fileID: 1664256549}
+  - {fileID: 443578314}
+  - {fileID: 1383411827}
