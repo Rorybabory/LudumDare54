@@ -6,6 +6,6 @@ public class RangedBehavior : AttackBehavior
 {
     public override void Attack()
     {
-        Debug.Log("ranged attack");
+        this.ApplyDamage();
     }
 }
