@@ -4,7 +4,13 @@ public class RangedAttackBehavior : AttackBehavior
 {
     [SerializeField]
     private AmmunitionStock stock;
+    [SerializeField]
+    private SoundEffect sound;
 
+    void Start()
+    {
+        sound.Init(gameObject);
+    }
     public override void Attack()
     {
         if (this.stock.IsEmpty())
@@ -15,9 +21,10 @@ public class RangedAttackBehavior : AttackBehavior
         }
         else
         {
+
             this.stock.Decrement();
             this.ApplyDamage();
-            
+            sound.Play();
             // TODO:
             // Play fire animation
             // Play fire SFX
