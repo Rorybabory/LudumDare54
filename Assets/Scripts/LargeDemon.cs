@@ -64,6 +64,10 @@ public class LargeDemon : MonoBehaviour
                     Debug.Log("Deal Damage to the player!");
                     sword.hitplayer = false;
                     canHitPlayer = false;
+                    if (sword.damageable != null)
+                    {
+                        sword.damageable.TakeDamage(2);
+                    }
                 }
                 else
                 {
