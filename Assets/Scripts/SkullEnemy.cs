@@ -38,7 +38,7 @@ public class SkullEnemy : MonoBehaviour
         {
             timetomove = Random.Range(1f, 3f);
             movetimer = 0;
-            offsetvelocity = new Vector3(Random.Range(-10f, 10f), Random.Range(-5f, 5f), Random.Range(-10f, 10f));
+            offsetvelocity = new Vector3(Random.Range(-20f, 10f), Random.Range(-5f, 5f), Random.Range(-20f, 20f));
         }
         offset += offsetvelocity * Time.deltaTime;
     }

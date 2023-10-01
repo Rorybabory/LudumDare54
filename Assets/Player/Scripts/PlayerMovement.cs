@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+    [SerializeField, TextArea(4, 100)] private string debug;
+
     [Header("Running")]
     [SerializeField] private float runSpeed;
     [SerializeField] private float groundAccel, groundDeccel, airAccel, airDeccel, initialStepDelay, stepSoundFrequency;
@@ -16,11 +18,18 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private int maxJumps;
     [SerializeField] private BufferTimer jumpBuffer;
 
+    [Header("Wall Jumping")]
+    [SerializeField] private float walljumpHeight;
+    [SerializeField] private float walljumpBoost;
+
     [Header("Dashing")]
     [SerializeField] private float dashVelocity;
     [SerializeField] private float dashDuration, dashCooldown;
     [SerializeField] private BufferTimer dashBuffer;
     [SerializeField] private SoundEffect dashSound;
+
+    [Header("Wall Sliding")]
+    [SerializeField] private float wallSlideAccel;
 
     [Header("Camera")]
     [SerializeField] private Vector2 cameraSensitivity;
@@ -30,6 +39,11 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private Transform groundCheckPosition;
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask groundMask;
+
+    [Header("Wall Check")]
+    [SerializeField] private Transform wallCheckPosition;
+    [SerializeField] private float wallcheckRadius;
+    [SerializeField] private int wallCheckWhiskerCount;
 
     private Vector2 cameraRotation;
     private new Rigidbody rigidbody;
@@ -41,11 +55,39 @@ public class PlayerMovement : MonoBehaviour {
     // state machine blackboard
     private Vector2Int inputDir;
     private Vector2 inputDirNormalized;
-    private bool jumpDown;
-    private bool dashDown;
-    private bool onGround;
+    private bool jumpDown, dashDown;
+    private bool onGround, onWall;
+    private RaycastHit wallHit;
 
     private Collider[] overlapSphereColliders = new Collider[1];
+
+    private Vector3 velocity {
+        get => rigidbody.velocity;
+        set => rigidbody.velocity = value;
+    }
+
+    private List<(string message, float time)> debugContent = new();
+    private new void print(object message) => debugContent.Add((message.ToString(), Time.time));
+    private void realPrint() {
+        debugContent.RemoveAll(c => Time.time - c.time > 3f);
+        debugContent.Reverse();
+        debug = string.Join("\n", debugContent.ConvertAll(c => c.message));
+        debugContent.Reverse();
+    }
+
+    private (int success, RaycastHit hit) WallCheck(float startAngle, float endAngle, float dist, int whiskerCount) {
+
+        for (int i = 0; i < whiskerCount; i++) {
+
+            float angle = Mathf.Lerp(startAngle, endAngle, (float)i / (whiskerCount - 1)) * Mathf.Deg2Rad;
+            Vector3 direction = transform.TransformDirection(new(Mathf.Cos(angle), 0, Mathf.Sin(angle)));
+            Debug.DrawRay(wallCheckPosition.position, direction * dist, Color.red);
+            if (Physics.Raycast(wallCheckPosition.position, direction, out var hit, dist, groundMask) && Mathf.Abs(hit.normal.y) < 0.001f)
+                return (1, hit);
+        }
+
+        return default;
+    }
 
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
@@ -92,20 +134,27 @@ public class PlayerMovement : MonoBehaviour {
         transform.eulerAngles = Vector3.up * cameraRotation.y;
 
         // ground check
-        bool GroundCheck(Transform origin, float radius) => Physics.OverlapSphereNonAlloc(origin.position, radius, overlapSphereColliders, groundMask) > 0;
-        onGround = GroundCheck(groundCheckPosition, groundCheckRadius) && rigidbody.velocity.y <= 0;
+        onGround = Physics.OverlapSphereNonAlloc(groundCheckPosition.position, groundCheckRadius, overlapSphereColliders, groundMask) > 0;
+
+        // wall check
+        (int success, var wallCheckHit) = WallCheck(0, 360, wallcheckRadius, wallCheckWhiskerCount);
+        onWall = success > 0;
+        wallHit = wallCheckHit;
 
         // dash cooldown
         dashCooldownTimer += Time.deltaTime;
 
         // state machine (!!! WOW AMAZING !!!)
         stateMachine.Update();
+        
+        realPrint();
     }
 
     private Running     running;
     private Grounded    grounded;
     private Falling     falling;
     private Dashing     dashing;
+    private Wallsliding wallsliding;   
 
     private void InitializeStateMachine() {
 
@@ -113,13 +162,20 @@ public class PlayerMovement : MonoBehaviour {
         grounded    = new(this, running);
         falling     = new(this, running);
         dashing     = new(this);
+        wallsliding = new(this, running);
+
+        CanTransition
+            inputMatchesWall = () => Vector3.Dot(-wallHit.normal, transform.TransformDirection(inputDirNormalized.x, 0, inputDirNormalized.y)) > 0.75f;
 
         Transition
-            jump            = new(falling,  () => jumpDown && jumpsRemaining > 0, Jump),
-            groundToFall    = new(falling,  () => !onGround),
-            toGounded       = new(grounded, () => onGround),
-            enterDash       = new(dashing,  () => dashDown && dashCooldownTimer > dashCooldown),
-            endDash         = new(falling,  () => stateMachine.stateDuration > dashDuration);
+            jump            = new(falling,      () => jumpDown && jumpsRemaining > 0, Jump),
+            walljump        = new(falling,      () => jumpDown && onWall && jumpsRemaining > 0, Walljump),
+            groundToFall    = new(falling,      () => !onGround),
+            toGounded       = new(grounded,     () => onGround && velocity.y <= 0),
+            enterDash       = new(dashing,      () => dashDown && dashCooldownTimer > dashCooldown),
+            endDash         = new(falling,      () => stateMachine.stateDuration > dashDuration),
+            enterWallSlide  = new(wallsliding,  () => onWall && inputMatchesWall() && velocity.y < 0),
+            exitWallSide    = new(falling,      () => !onWall || !inputMatchesWall());
 
         Dictionary<State, List<Transition>> transitions = new() {
 
@@ -131,12 +187,19 @@ public class PlayerMovement : MonoBehaviour {
 
             { falling, new() {
                 toGounded,
+                walljump,
                 jump,
                 enterDash,
+                enterWallSlide,
             } },
 
             { dashing, new() {
                 endDash,
+            } },
+
+            { wallsliding, new() {
+                exitWallSide,
+                walljump,
             } },
         };
 
@@ -149,8 +212,8 @@ public class PlayerMovement : MonoBehaviour {
         public Running(PlayerMovement vars) : base(vars) { }
 
         private Vector3 localVel {
-            get => vars.transform.InverseTransformDirection(vars.rigidbody.velocity);
-            set => vars.rigidbody.velocity = vars.transform.TransformDirection(value);
+            get => vars.transform.InverseTransformDirection(vars.velocity);
+            set => vars.velocity = vars.transform.TransformDirection(value);
         }
         public Vector2 hVel {
             get => new(localVel.x, localVel.z);
@@ -179,7 +242,7 @@ public class PlayerMovement : MonoBehaviour {
 
             hVel = Vector2.MoveTowards(hVel, targetSpeed, velDelta * Time.deltaTime);
 
-            vars.rigidbody.velocity = vars.transform.TransformDirection(localVel);
+            vars.velocity = vars.transform.TransformDirection(localVel);
 
             base.Update();
         }
@@ -215,6 +278,7 @@ public class PlayerMovement : MonoBehaviour {
             }
             else timeSinceStep = vars.stepSoundFrequency - vars.initialStepDelay;
 
+            superState.yVel = 0;
 
             base.Update();
         }
@@ -257,14 +321,33 @@ public class PlayerMovement : MonoBehaviour {
 
             dashVel = vars.transform.TransformDirection(new Vector3(dir.x, 0, dir.y)) * vars.dashVelocity;
 
-            vars.rigidbody.velocity += dashVel;
+            vars.velocity += dashVel;
         }
 
         public override void Exit() {
 
-            vars.rigidbody.velocity -= dashVel;
+            vars.velocity -= dashVel;
 
             base.Exit();
+        }
+    }
+
+    private class Wallsliding : RunningSubState {
+
+        public Wallsliding(PlayerMovement vars, Running running) : base(vars, running) { }
+
+        public override void Enter() {
+
+            base.Enter();
+
+            superState.yVel = 0;
+        }
+
+        public override void Update() {
+
+            superState.yVel -= vars.wallSlideAccel * Time.deltaTime;
+
+            base.Update();
         }
     }
 
@@ -277,10 +360,27 @@ public class PlayerMovement : MonoBehaviour {
 
         float jumpForce = Mathf.Sqrt(jumpHeight * gravity * 2);
 
-        Vector3 vel = rigidbody.velocity;
+        Vector3 vel = velocity;
         vel.y = jumpForce;
         if (inputDir != Vector2Int.zero) vel += transform.TransformDirection(new Vector3(inputDirNormalized.x, 0, inputDirNormalized.y)) * jumpForce * jumpBoostPercent;
-        rigidbody.velocity = vel;
+        velocity = vel;
+    }
+
+    private void Walljump() {
+
+        jumpSound.Play();
+
+        jumpBuffer.Reset();
+
+        Vector3 wallNormal = wallHit.normal,
+                flatVel = new(velocity.x, 0, velocity.z),
+                currentVel = transform.forward * flatVel.magnitude * inputDir.y;
+
+        float dot = Vector3.Dot(currentVel, wallNormal);
+        velocity
+            = currentVel
+            + wallNormal * (walljumpBoost - Mathf.Min(0, dot))
+            + Vector3.up * Mathf.Sqrt(walljumpHeight * gravity * 2f);
     }
 
     #region State Machine
@@ -327,7 +427,7 @@ public class PlayerMovement : MonoBehaviour {
 
             currentState.Enter();
 
-            //print($"{previousState.GetType().Name} -> {currentState.GetType().Name}");
+            vars.print($"{previousState.GetType().Name} -> {currentState.GetType().Name}");
         }
 
         public void Update() {

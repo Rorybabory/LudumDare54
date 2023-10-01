@@ -26,7 +26,7 @@ namespace Channels
 
         public event Action<TData> Raised;
 
-        public void Raise(TData data)
+        public virtual void Raise(TData data)
         {
             this.Raised?.Invoke(data);
             this.raised?.Invoke(data);
