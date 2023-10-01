@@ -19,7 +19,7 @@ public class PlayerInput : MonoBehaviour
         }
         if (Input.GetKeyDown(rangedKey))
         {
-            rangedBehavior.A5ttack();
+            rangedBehavior.Attack();
         }
     }
 
