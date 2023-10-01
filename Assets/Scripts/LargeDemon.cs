@@ -31,7 +31,10 @@ public class LargeDemon : MonoBehaviour
         Quaternion newrot = transform.rotation;
         newrot = Quaternion.Euler(0, target_angle, 0);
         float dif = Mathf.Abs(Quaternion.Dot(transform.rotation, newrot));
-
+        if (!characterController.isGrounded)
+        {
+            characterController.Move(Physics.gravity * Time.deltaTime);
+        }
         if (state == DemonState.IDLE)
         {
             animator.Play("Idle");
@@ -55,7 +58,7 @@ public class LargeDemon : MonoBehaviour
                 animator.Play("Walk");
                 state = DemonState.WALKING;
             }
-            if ((Vector3.Distance(transform.position, playerTransform.position) > attackDistance * 1.5f || dif < 0.7) && info.normalizedTime < 0.5)
+            if ((Vector3.Distance(transform.position, playerTransform.position) > attackDistance * 1.5f || dif < 0.5) && info.normalizedTime < 0.5)
             {
                 animator.Play("Walk");
                 state = DemonState.WALKING;
