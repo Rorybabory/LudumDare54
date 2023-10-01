@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class spawning : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     public GameObject prefabObj;
 
@@ -23,6 +23,12 @@ public class spawning : MonoBehaviour
 
     public void Spawn(Vector3 pos = default, Quaternion rotats = default, Transform spawnpoint = null)
     {
-        GameObject spawnedObject = Instantiate(prefabObj, pos, rotats, spawnpoint);
+        GameObject spawnedObject = Instantiate(prefabObj, default, rotats, spawnpoint);
+        spawnedObject.transform.localPosition = pos;
+    }
+
+    public void Spawn()
+    {
+        this.Spawn(default);
     }
 }
