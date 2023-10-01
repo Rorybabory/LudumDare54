@@ -19,6 +19,7 @@ public class SkullEnemy : MonoBehaviour
     private Vector3 offsetvelocity;
     private Vector3 offset;
 
+    private Rigidbody rb;
 
     void Start()
     {
@@ -28,7 +29,17 @@ public class SkullEnemy : MonoBehaviour
         movetimer = 0;
         timetoshoot = Random.Range(0.5f, 4.0f);
         shoottimer = 0;
+        rb = GetComponent<Rigidbody>();
     }
+
+    public void TakeDamage(GameObject g)
+    {
+        if (g == this.gameObject)
+        {
+            Debug.Log("Skull was hit");
+        }
+    }
+
     void ShootFireball()
     {
         GameObject fireball = Instantiate(fireballPrefab, transform.position + new Vector3(0, -0.75f, 0.0f), transform.rotation);
@@ -39,7 +50,8 @@ public class SkullEnemy : MonoBehaviour
     {
         float wave = Mathf.Sin(Time.time) * 0.35f;
         Vector3 temppos = transform.position;
-        transform.position = basePos + new Vector3(0, wave, 0) + offset;
+        
+
         float target_angle = Mathf.Atan2(this.playerTransform.position.x - this.transform.position.x, this.playerTransform.position.z - this.transform.position.z);
         target_angle *= 180.0f / Mathf.PI;
         Quaternion newrot = transform.rotation;
@@ -50,8 +62,12 @@ public class SkullEnemy : MonoBehaviour
         {
             timetomove = Random.Range(1f, 3f);
             movetimer = 0;
-            offsetvelocity = new Vector3(Random.Range(-40f, 10f), Random.Range(-3.8f, 3.8f), Random.Range(-40f, 20f));
+            rb.velocity = new Vector3(Random.Range(-20f, 10f), Random.Range(-3.8f, 15f), Random.Range(-20f, 20f));
         }
+
+        Vector3 vectorfrombase = transform.position - basePos;
+        rb.velocity -= Vector3.Normalize(vectorfrombase) * 16.0f * Time.deltaTime;
+
         shoottimer += Time.deltaTime;
         if (shoottimer > timetoshoot)
         {
@@ -59,11 +75,9 @@ public class SkullEnemy : MonoBehaviour
             shoottimer = 0;
             timetoshoot = Random.Range(0.5f, 4.0f);
         }
-        offset += offsetvelocity * Time.deltaTime;
     }
     void FixedUpdate()
     {
-        offset *= 0.96f;
-        offsetvelocity *= 0.95f;
+        rb.velocity = Vector3.Scale(rb.velocity, new Vector3(0.95f, 0.95f, 0.95f)); 
     }
 }
