@@ -6,8 +6,6 @@ using System.Runtime.CompilerServices;
 
 public class RangedHitScanner : HitScan
 {
-    [SerializeField] Camera camera;
-    [SerializeField] LayerMask ground;
     [SerializeField] Transform hitScanOrigin;
     public override Collider[] ScanForColliders()
     {
