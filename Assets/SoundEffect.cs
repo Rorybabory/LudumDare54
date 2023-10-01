@@ -64,7 +64,7 @@ public class SoundEffect {
         if (sequential) {
             currentClip = clip[clipIndex % clip.Length];
             clipIndex++;
-        } else currentClip = clip[Random.Range(0, clip.Length - 1)];
+        } else currentClip = clip[Random.Range(0, clip.Length)];
 
         // play sound
         source.pitch = Random.Range(minPitch, maxPitch);

@@ -37,6 +37,7 @@ public class SkullEnemy : MonoBehaviour
         if (g == this.gameObject)
         {
             Debug.Log("Skull was hit");
+            rb.velocity -= g.transform.forward * 20.0f;
         }
     }
 
