@@ -691,50 +691,16 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
-  maximumScale: 5
---- !u!114 &4003806219573563673
-MonoBehaviour:
-=======
   maximumScale: 30
   minimumScale: 2
   anchoredToMiddle: {fileID: 8623560837212687311}
   anchoredToBottom: {fileID: 215141371784802387}
 --- !u!1 &8039500938271622813
 GameObject:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
-  m_GameObject: {fileID: 7530099313873678454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a93599284b034428288e9e59a46973, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  counter:
-    <Value>k__BackingField: 3
-    <Ceiling>k__BackingField: 3
-  damaged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: d30dfdcdbae1d704e8283b082531ab64, type: 2}
-        m_TargetAssemblyTypeName: Channels.Channel`1[[UnityEngine.GameObject, UnityEngine
-        m_MethodName: Raise
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 7530099313873678454}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &3374179655183424309
-MonoBehaviour:
-=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 215141371784802387}
@@ -747,78 +713,10 @@ MonoBehaviour:
   m_IsActive: 1
 --- !u!4 &215141371784802387
 Transform:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
-  m_GameObject: {fileID: 7530099313873678454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c0ada4603ef4f5aa5e6420efca259a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  channel: {fileID: 11400000, guid: cd86a81b9ee195142a663580615bf515, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 344300376740149176}
-        m_TargetAssemblyTypeName: SizeTransformer, Assembly-CSharp
-        m_MethodName: IncreaseSize
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6894565688646016578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7530099313873678454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c0ada4603ef4f5aa5e6420efca259a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  channel: {fileID: 11400000, guid: d30dfdcdbae1d704e8283b082531ab64, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 344300376740149176}
-        m_TargetAssemblyTypeName: SizeTransformer, Assembly-CSharp
-        m_MethodName: DecreaseSize
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7947470848248996999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7530099313873678454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8847223892da4dea9d72964e26bb1a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammunition:
-    <Value>k__BackingField: 6
-    <Ceiling>k__BackingField: 6
-=======
   m_GameObject: {fileID: 8039500938271622813}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -829,7 +727,6 @@ MonoBehaviour:
   - {fileID: 7748555390932164919}
   m_Father: {fileID: 7303199578886716144}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &8947583597576002683
 GameObject:
   m_ObjectHideFlags: 0
