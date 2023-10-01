@@ -18,7 +18,9 @@ public class SizeTransformer : MonoBehaviour
     [SerializeField]
     private float minimumScale = 1f;
 
-    [SerializeField] private Transform anchoredToMiddle, anchoredToBottom;
+    [SerializeField] private Transform anchoredToMiddle, anchoredToBottom, renderTextureCanvas;
+
+    [SerializeField] private new Rigidbody rigidbody;
 
     public float Size
     {
@@ -38,13 +40,6 @@ public class SizeTransformer : MonoBehaviour
     {
         get => this.curve;
         set => this.curve = value;
-    }
-
-    private new Rigidbody rigidbody;
-
-    private void Awake()
-    {
-        rigidbody = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -88,7 +83,7 @@ public class SizeTransformer : MonoBehaviour
 
         // transform scale
         Vector3 scale = transform.localScale;
-        scale.y = WorldSize(size);
+        scale.y = newWorldSize;
         transform.localScale = scale;
 
         // position
@@ -96,5 +91,10 @@ public class SizeTransformer : MonoBehaviour
 
         // anchored posiition
         anchoredToBottom.localPosition = Vector3.down / 2f;
+
+        // canvas scale
+        Vector3 canvasScale = renderTextureCanvas.localScale;
+        canvasScale.y = 1f / newWorldSize;
+        renderTextureCanvas.localScale = canvasScale;
     }
 }
