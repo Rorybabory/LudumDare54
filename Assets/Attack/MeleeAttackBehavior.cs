@@ -7,7 +7,7 @@ public class MeleeAttackBehavior : AttackBehavior
 
     public override void Attack()
     {
-        Debug.Log("melee attack");
+        this.ApplyDamage();
     }
 
 
