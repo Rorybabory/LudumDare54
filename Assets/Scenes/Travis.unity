@@ -1029,6 +1029,7 @@ MonoBehaviour:
   playerTransform: {fileID: 1457806525}
   walkSpeed: 3
   attackDistance: 8
+  sword: {fileID: 0}
 --- !u!136 &1232976801
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1154,6 +1155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592405413968741895, guid: 02295c005e00f4682bc3a9571920298e,
+        type: 3}
+      propertyPath: field of view
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7530099313873678454, guid: 02295c005e00f4682bc3a9571920298e,
         type: 3}
