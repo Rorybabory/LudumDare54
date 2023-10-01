@@ -463,7 +463,8 @@ MonoBehaviour:
   dashBuffer:
     threshold: 0.1
   dashSound:
-    clip: []
+    clip:
+    - {fileID: 8300000, guid: 456a93f0aca39414b82b2152d181fa79, type: 3}
     volume: 1
     minPitch: 1
     maxPitch: 1
