@@ -221,7 +221,7 @@ ScriptedImporter:
     uvTransform: {x: 28, y: 112}
   - name: ParticleEffectSheet_Frame_5
     originalName: 
-    pivot: {x: 0.5, y: -0.06666667}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -229,7 +229,7 @@ ScriptedImporter:
       x: 28
       y: 26
       width: 10
-      height: 15
+      height: 16
     spriteID: 495c77815cfa35c4690b78ab34b95842
     spriteBone: []
     spriteOutline: []
@@ -241,15 +241,15 @@ ScriptedImporter:
     uvTransform: {x: 28, y: 26}
   - name: ParticleEffectSheet_Frame_6
     originalName: 
-    pivot: {x: 0.5, y: -0.06666667}
+    pivot: {x: 0.5, y: -0.071428575}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 28
-      y: 49
+      y: 90
       width: 10
-      height: 15
+      height: 14
     spriteID: f5d9a01294b656b479e58dfd0be34c6c
     spriteBone: []
     spriteOutline: []
@@ -258,7 +258,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 28, y: 49}
+    uvTransform: {x: 28, y: 90}
   - name: ParticleEffectSheet_Frame_7
     originalName: 
     pivot: {x: 0.5, y: 0}
@@ -307,7 +307,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 28
-      y: 72
+      y: 50
       width: 12
       height: 12
     spriteID: 0a825f1cfb77fab4cb9ee17d1aab43c5
@@ -318,7 +318,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 28, y: 72}
+    uvTransform: {x: 28, y: 50}
   - name: ParticleEffectSheet_Frame_10
     originalName: 
     pivot: {x: 0.5, y: -0.3}
@@ -447,7 +447,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 28
-      y: 92
+      y: 70
       width: 12
       height: 12
     spriteID: 54e3e72d136f1b44e9c0c787978e189c
@@ -458,7 +458,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 28, y: 92}
+    uvTransform: {x: 28, y: 70}
   - name: ParticleEffectSheet_Frame_17
     originalName: 
     pivot: {x: 0.5, y: -0.3}
@@ -592,9 +592,9 @@ ScriptedImporter:
       frameIndex: 5
       cellRect:
         x: 3
-        y: 1
+        y: 0
         width: 10
-        height: 15
+        height: 16
       spriteId: 495c77815cfa35c4690b78ab34b95842
     - name: ParticleEffectSheet_Frame_6
       frameIndex: 6
@@ -602,7 +602,7 @@ ScriptedImporter:
         x: 3
         y: 1
         width: 10
-        height: 15
+        height: 14
       spriteId: f5d9a01294b656b479e58dfd0be34c6c
     - name: ParticleEffectSheet_Frame_7
       frameIndex: 7
