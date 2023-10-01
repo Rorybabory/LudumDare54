@@ -423,6 +423,7 @@ GameObject:
   - component: {fileID: 4003806219573563673}
   - component: {fileID: 3374179655183424309}
   - component: {fileID: 6894565688646016578}
+  - component: {fileID: 7947470848248996999}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -593,6 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitScanner: {fileID: 7572119920852936854}
   damageAmount: 1
+  stock: {fileID: 7947470848248996999}
 --- !u!114 &7572119920852936854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,8 +672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter:
-    Value: 3
-    Maximum: 3
+    <Value>k__BackingField: 3
+    <Ceiling>k__BackingField: 3
   damaged:
     m_PersistentCalls:
       m_Calls:
@@ -743,6 +745,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7947470848248996999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7530099313873678454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8847223892da4dea9d72964e26bb1a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammunition:
+    <Value>k__BackingField: 6
+    <Ceiling>k__BackingField: 6
 --- !u!1 &8947583597576002683
 GameObject:
   m_ObjectHideFlags: 0
