@@ -31,9 +31,7 @@ public class SkullEnemy : MonoBehaviour
     }
     void ShootFireball()
     {
-        GameObject fireball = Instantiate(fireballPrefab, transform);
-        fireball.transform.parent = null;
-        fireball.transform.position = transform.position + new Vector3(0, -0.75f, 0.0f);
+        GameObject fireball = Instantiate(fireballPrefab, transform.position + new Vector3(0, -0.75f, 0.0f), transform.rotation);
         Debug.Log("Shoot Fireball");
     }
     // Update is called once per frame
