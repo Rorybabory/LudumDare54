@@ -25,12 +25,13 @@ Transform:
   m_GameObject: {fileID: 1103563160226479896}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8374349626668845649}
   - {fileID: 7748555390932164919}
+  - {fileID: 2490022914270621316}
   m_Father: {fileID: 2531988308176006312}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2679428087568084836
@@ -124,7 +125,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2679428087568084836}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2f195765cae9b4e83b532d0fd583cd32, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -308,6 +309,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7303199578886716144}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4525066174928126252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2490022914270621316}
+  m_Layer: 0
+  m_Name: Wall check position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2490022914270621316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4525066174928126252}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7303199578886716144}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5221351484987157378
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 5221351484987157378}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.75}
+  m_LocalPosition: {x: 0, y: 1, z: 0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -364,7 +396,7 @@ Transform:
   m_GameObject: {fileID: 7371984407471180404}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -425,11 +457,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cfe4b90e0cb42a985975d8a5101758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 
   runSpeed: 17
   groundAccel: 300
   groundDeccel: 300
-  airAccel: 150
-  airDeccel: 150
+  airAccel: 80
+  airDeccel: 80
   initialStepDelay: 0.15
   stepSoundFrequency: 0.3
   stepSound:
@@ -459,6 +492,8 @@ MonoBehaviour:
   maxJumps: 2
   jumpBuffer:
     threshold: 0.1
+  walljumpHeight: 4
+  walljumpBoost: 20
   dashVelocity: 80
   dashDuration: 0.15
   dashCooldown: 0.5
@@ -473,13 +508,17 @@ MonoBehaviour:
     sequential: 0
     overlap: 1
     loop: 0
-  cameraSensitivity: {x: 1.5, y: 1.5}
+  wallSlideAccel: 5
+  cameraSensitivity: {x: 2.5, y: 2.5}
   cameraPivot: {fileID: 8338417951328117507}
   groundCheckPosition: {fileID: 7748555390932164919}
   groundCheckRadius: 0.3
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  wallCheckPosition: {fileID: 2490022914270621316}
+  wallcheckRadius: 0.75
+  wallCheckWhiskerCount: 20
 --- !u!54 &260140560564070401
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -505,7 +544,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 2
 --- !u!114 &7015735313568048010
 MonoBehaviour:
