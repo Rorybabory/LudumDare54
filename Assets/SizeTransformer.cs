@@ -15,21 +15,19 @@ public class SizeTransformer : MonoBehaviour
     private AnimationCurve curve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
     [SerializeField]
     private float maximumScale = 5f;
+    [SerializeField]
+    private float minimumScale = 1f;
+
+    [SerializeField] private Transform anchoredToMiddle, anchoredToBottom;
 
     public float Size
     {
         get => this.size;
-        private set
-        {
-            this.size = Mathf.Clamp01(value);
-            this.UpdateSize();
-        }
+        private set => this.UpdateSize(value);
     }
-    public float MaximumScale
-    {
-        get => this.maximumScale;
-        set => this.maximumScale = value;
-    }
+
+    // Calculate the percentage of the current size and evaluate against a normalized AnimationCurve.
+    private float WorldSize(float size) => Mathf.Lerp(minimumScale, maximumScale, curve.Evaluate(size));
 
     public float Increment
     {
@@ -40,6 +38,19 @@ public class SizeTransformer : MonoBehaviour
     {
         get => this.curve;
         set => this.curve = value;
+    }
+
+    private new Rigidbody rigidbody;
+
+    private void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.I)) IncreaseSize();
+        if (Input.GetKey(KeyCode.K)) DecreaseSize();
     }
 
     public void IncreaseSize()
@@ -67,13 +78,23 @@ public class SizeTransformer : MonoBehaviour
         }
     }
 
-    private void UpdateSize()
+    private void UpdateSize(float newSize)
     {
-        // Calculate the percentage of the current size and evaluate against a normalized AnimationCurve.
-        var percentage = this.Size / 1f;
-        var evaluated = this.Curve.Evaluate(percentage);
-        
-        // Scale the player's height up based on the evaluated value of the maximum scale.
-        this.transform.localScale = Vector3.one + (Vector3.up * this.MaximumScale * evaluated);
+        float worldSize = WorldSize(size),
+              newWorldSize = WorldSize(newSize),
+              worldDiff = newWorldSize - worldSize;
+
+        size = Mathf.Clamp01(newSize);
+
+        // transform scale
+        Vector3 scale = transform.localScale;
+        scale.y = WorldSize(size);
+        transform.localScale = scale;
+
+        // position
+        rigidbody.MovePosition(rigidbody.position + worldDiff / 2f * Vector3.up);
+
+        // anchored posiition
+        anchoredToBottom.localPosition = Vector3.down / 2f;
     }
 }

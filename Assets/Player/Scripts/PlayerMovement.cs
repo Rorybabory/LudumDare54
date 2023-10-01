@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour {
 
     [SerializeField, TextArea(4, 100)] private string debug;
 
+    [Header("Size")]
+    [SerializeField] private float maxSizeVelPercent;
+
     [Header("Running")]
     [SerializeField] private float runSpeed;
     [SerializeField] private float groundAccel, groundDeccel, airAccel, airDeccel, initialStepDelay, stepSoundFrequency;
@@ -47,6 +50,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private Vector2 cameraRotation;
     private new Rigidbody rigidbody;
+    private SizeTransformer sizeTransformer;
     private StateMachine stateMachine;
 
     private int jumpsRemaining;
@@ -61,9 +65,11 @@ public class PlayerMovement : MonoBehaviour {
 
     private Collider[] overlapSphereColliders = new Collider[1];
 
+    private float velPercent => Mathf.Lerp(1, maxSizeVelPercent, sizeTransformer.Size);
+
     private Vector3 velocity {
-        get => rigidbody.velocity;
-        set => rigidbody.velocity = value;
+        get => rigidbody.velocity / velPercent;
+        set => rigidbody.velocity = value * velPercent;
     }
 
     private List<(string message, float time)> debugContent = new();
@@ -97,6 +103,7 @@ public class PlayerMovement : MonoBehaviour {
     private void Awake() {
 
         rigidbody = GetComponent<Rigidbody>();
+        sizeTransformer = GetComponent<SizeTransformer>();
 
         InitializeStateMachine();
         stateMachine.Reset();
@@ -142,7 +149,7 @@ public class PlayerMovement : MonoBehaviour {
         wallHit = wallCheckHit;
 
         // dash cooldown
-        dashCooldownTimer += Time.deltaTime;
+        dashCooldownTimer += Time.deltaTime * velPercent;
 
         // state machine (!!! WOW AMAZING !!!)
         stateMachine.Update();
@@ -240,7 +247,7 @@ public class PlayerMovement : MonoBehaviour {
                 ? (vars.inputDirNormalized * maxSpeed, accel)
                 : (Vector2.zero, deccel);
 
-            hVel = Vector2.MoveTowards(hVel, targetSpeed, velDelta * Time.deltaTime);
+            hVel = Vector2.MoveTowards(hVel, targetSpeed, velDelta * Time.deltaTime * vars.velPercent);
 
             vars.velocity = vars.transform.TransformDirection(localVel);
 
@@ -269,7 +276,7 @@ public class PlayerMovement : MonoBehaviour {
 
             if (vars.inputDir != Vector2Int.zero) {
 
-                timeSinceStep += Time.deltaTime;
+                timeSinceStep += Time.deltaTime * vars.velPercent;
 
                 if (timeSinceStep > vars.stepSoundFrequency) {
                     timeSinceStep = 0;
@@ -297,7 +304,7 @@ public class PlayerMovement : MonoBehaviour {
 
         public override void Update() {
 
-            superState.yVel = Mathf.Max(-vars.maxFallSpeed, superState.yVel - vars.gravity * Time.deltaTime);
+            superState.yVel = Mathf.Max(-vars.maxFallSpeed, superState.yVel - vars.gravity * Time.deltaTime * vars.velPercent);
 
             base.Update();
         }
@@ -307,7 +314,7 @@ public class PlayerMovement : MonoBehaviour {
 
         public Dashing(PlayerMovement vars) : base(vars) { }
 
-        private Vector3 dashVel;
+        private Vector3 ogVel;
 
         public override void Enter() {
 
@@ -319,14 +326,14 @@ public class PlayerMovement : MonoBehaviour {
 
             Vector2 dir = vars.inputDir != Vector2Int.zero ? vars.inputDirNormalized : Vector2.up;
 
-            dashVel = vars.transform.TransformDirection(new Vector3(dir.x, 0, dir.y)) * vars.dashVelocity;
+            ogVel = vars.velocity;
 
-            vars.velocity += dashVel;
+            vars.velocity += vars.transform.TransformDirection(new Vector3(dir.x, 0, dir.y)) * vars.dashVelocity;
         }
 
         public override void Exit() {
 
-            vars.velocity -= dashVel;
+            vars.velocity = ogVel;
 
             base.Exit();
         }
@@ -345,7 +352,7 @@ public class PlayerMovement : MonoBehaviour {
 
         public override void Update() {
 
-            superState.yVel -= vars.wallSlideAccel * Time.deltaTime;
+            superState.yVel -= vars.wallSlideAccel * Time.deltaTime * vars.velPercent;
 
             base.Update();
         }
