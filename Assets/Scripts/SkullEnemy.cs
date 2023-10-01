@@ -7,6 +7,7 @@ public class SkullEnemy : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Transform playerTransform;
+    [SerializeField] private GameObject fireball;
     private Vector3 basePos;
 
     private float timetomove;
@@ -38,7 +39,7 @@ public class SkullEnemy : MonoBehaviour
         {
             timetomove = Random.Range(1f, 3f);
             movetimer = 0;
-            offsetvelocity = new Vector3(Random.Range(-20f, 10f), Random.Range(-5f, 5f), Random.Range(-20f, 20f));
+            offsetvelocity = new Vector3(Random.Range(-40f, 10f), Random.Range(-3.8f, 3.8f), Random.Range(-40f, 20f));
         }
         offset += offsetvelocity * Time.deltaTime;
     }
