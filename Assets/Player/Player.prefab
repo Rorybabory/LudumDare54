@@ -205,7 +205,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 90
   orthographic: 0
@@ -434,7 +434,9 @@ MonoBehaviour:
   stepSoundFrequency: 0.3
   stepSound:
     clip:
-    - {fileID: 8300000, guid: 456a93f0aca39414b82b2152d181fa79, type: 3}
+    - {fileID: 8300000, guid: ceb2d52b7804d20449b3feb72adb8347, type: 3}
+    - {fileID: 8300000, guid: d8ac9dddce6748844afe92f7670c4fd1, type: 3}
+    - {fileID: 8300000, guid: 298f7376aed300f489b11340c60933b6, type: 3}
     volume: 0.1
     minPitch: 1
     maxPitch: 1
@@ -448,7 +450,7 @@ MonoBehaviour:
   jumpSound:
     clip:
     - {fileID: 8300000, guid: c49666bd72345e84eba4669e046849b9, type: 3}
-    volume: 0.5
+    volume: 0.1
     minPitch: 1
     maxPitch: 1
     sequential: 0
@@ -465,7 +467,7 @@ MonoBehaviour:
   dashSound:
     clip:
     - {fileID: 8300000, guid: 456a93f0aca39414b82b2152d181fa79, type: 3}
-    volume: 1
+    volume: 0.25
     minPitch: 1
     maxPitch: 1
     sequential: 0

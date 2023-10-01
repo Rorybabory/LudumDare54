@@ -38,9 +38,9 @@ public class LargeDemon : MonoBehaviour
         }else if (state == DemonState.WALKING)
         {
             animator.Play("Walk");
-            transform.rotation = Quaternion.Slerp(transform.rotation, newrot, Time.time * 0.0005f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newrot, Time.time * 0.001f);
             Vector3 directionVector = transform.forward;
-            characterController.Move(directionVector * Time.deltaTime * walkSpeed);
+            characterController.Move(directionVector * Time.deltaTime * walkSpeed * dif);
             if (Vector3.Distance(transform.position, playerTransform.position) < attackDistance && dif > 0.99f)
             {
                 state = DemonState.ATTACK;
@@ -60,6 +60,8 @@ public class LargeDemon : MonoBehaviour
                 animator.Play("Walk");
                 state = DemonState.WALKING;
             }
+            transform.rotation = Quaternion.Slerp(transform.rotation, newrot, Time.time * 0.00025f);
+
         }
 
     }

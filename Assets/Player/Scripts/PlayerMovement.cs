@@ -327,7 +327,7 @@ public class PlayerMovement : MonoBehaviour {
 
             currentState.Enter();
 
-            print($"{previousState.GetType().Name} -> {currentState.GetType().Name}");
+            //print($"{previousState.GetType().Name} -> {currentState.GetType().Name}");
         }
 
         public void Update() {
