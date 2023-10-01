@@ -14,12 +14,12 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(meleeKey)) {
+        /*if (Input.GetKeyDown(meleeKey)) {
             meleeBehavior.Attack();
-        }
+        }*/
         if (Input.GetKeyDown(rangedKey))
         {
-            rangedBehavior.A5ttack();
+            rangedBehavior.Attack();
         }
     }
 
