@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour {
     [Header("Wall Jumping")]
     [SerializeField] private float walljumpHeight;
     [SerializeField] private float walljumpBoost;
-    [SerializeField] private int maxWalljumps;
 
     [Header("Dashing")]
     [SerializeField] private float dashVelocity;
@@ -170,6 +169,7 @@ public class PlayerMovement : MonoBehaviour {
 
         Transition
             jump            = new(falling,      () => jumpDown && jumpsRemaining > 0, Jump),
+            walljump        = new(falling,      () => jumpDown && onWall && jumpsRemaining > 0, Walljump),
             groundToFall    = new(falling,      () => !onGround),
             toGounded       = new(grounded,     () => onGround && velocity.y <= 0),
             enterDash       = new(dashing,      () => dashDown && dashCooldownTimer > dashCooldown),
@@ -187,6 +187,7 @@ public class PlayerMovement : MonoBehaviour {
 
             { falling, new() {
                 toGounded,
+                walljump,
                 jump,
                 enterDash,
                 enterWallSlide,
@@ -198,6 +199,7 @@ public class PlayerMovement : MonoBehaviour {
 
             { wallsliding, new() {
                 exitWallSide,
+                walljump,
             } },
         };
 
@@ -362,6 +364,23 @@ public class PlayerMovement : MonoBehaviour {
         vel.y = jumpForce;
         if (inputDir != Vector2Int.zero) vel += transform.TransformDirection(new Vector3(inputDirNormalized.x, 0, inputDirNormalized.y)) * jumpForce * jumpBoostPercent;
         velocity = vel;
+    }
+
+    private void Walljump() {
+
+        jumpSound.Play();
+
+        jumpBuffer.Reset();
+
+        Vector3 wallNormal = wallHit.normal,
+                flatVel = new(velocity.x, 0, velocity.z),
+                currentVel = transform.forward * flatVel.magnitude * inputDir.y;
+
+        float dot = Vector3.Dot(currentVel, wallNormal);
+        velocity
+            = currentVel
+            + wallNormal * (walljumpBoost - Mathf.Min(0, dot))
+            + Vector3.up * Mathf.Sqrt(walljumpHeight * gravity * 2f);
     }
 
     #region State Machine

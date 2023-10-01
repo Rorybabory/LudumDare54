@@ -461,8 +461,8 @@ MonoBehaviour:
   runSpeed: 17
   groundAccel: 300
   groundDeccel: 300
-  airAccel: 150
-  airDeccel: 150
+  airAccel: 80
+  airDeccel: 80
   initialStepDelay: 0.15
   stepSoundFrequency: 0.3
   stepSound:
@@ -492,6 +492,8 @@ MonoBehaviour:
   maxJumps: 2
   jumpBuffer:
     threshold: 0.1
+  walljumpHeight: 4
+  walljumpBoost: 20
   dashVelocity: 80
   dashDuration: 0.15
   dashCooldown: 0.5
@@ -507,7 +509,7 @@ MonoBehaviour:
     overlap: 1
     loop: 0
   wallSlideAccel: 5
-  cameraSensitivity: {x: 1.5, y: 1.5}
+  cameraSensitivity: {x: 2.5, y: 2.5}
   cameraPivot: {fileID: 8338417951328117507}
   groundCheckPosition: {fileID: 7748555390932164919}
   groundCheckRadius: 0.3
