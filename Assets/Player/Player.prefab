@@ -1226,6 +1226,8 @@ GameObject:
   - component: {fileID: 7572119920852936854}
   - component: {fileID: 4424556982211606228}
   - component: {fileID: 344300376740149176}
+  - component: {fileID: 7962992994584182779}
+  - component: {fileID: 5517704374250298986}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1398,6 +1400,14 @@ MonoBehaviour:
   hitScanner: {fileID: 7572119920852936854}
   damageAmount: 1
   stock: {fileID: 0}
+  sound:
+    clip: []
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    sequential: 0
+    overlap: 1
+    loop: 0
 --- !u!114 &7572119920852936854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1423,6 +1433,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8af6b542d1fbf4494eb6b4e7767180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origin: {fileID: 0}
+  radius: 3
+  angle: 80
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  triggerInteraction: 1
 --- !u!114 &344300376740149176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1467,6 +1484,39 @@ MonoBehaviour:
   anchoredToBottom: {fileID: 215141371784802387}
   renderTextureCanvas: {fileID: 1579607617901814953}
   rigidbody: {fileID: 260140560564070401}
+--- !u!114 &7962992994584182779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7530099313873678454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8847223892da4dea9d72964e26bb1a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammunition:
+    <Value>k__BackingField: 0
+    <Ceiling>k__BackingField: 0
+--- !u!114 &5517704374250298986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7530099313873678454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a93599284b034428288e9e59a46973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter:
+    <Value>k__BackingField: 0
+    <Ceiling>k__BackingField: 0
+  damaged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7533328424148146030
 GameObject:
   m_ObjectHideFlags: 0
