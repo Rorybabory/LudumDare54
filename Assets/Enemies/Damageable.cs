@@ -36,5 +36,8 @@ public class Damageable : MonoBehaviour
                 killable.Kill();
             }
         }
+        
+        this.Damaged?.Invoke();
+        this.damaged?.Invoke();
     }
 }
