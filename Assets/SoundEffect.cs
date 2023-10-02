@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
-[System.Serializable]
-public class SoundEffect {
+[CreateAssetMenu(fileName = "New Sound Effect", menuName = "Sound Effect")]
+public class SoundEffect : ScriptableObject{
 
     public AudioClip[] clip;
+    public AudioMixerGroup mixerGroup;
     [Header("Parameters")]
     public float volume = 1;
     public float minPitch = 1, maxPitch = 1;
@@ -12,7 +14,6 @@ public class SoundEffect {
         sequential = false,
         overlap = true,
         loop = false;
-        //finishPlayingBeforeDestroy = true;
 
     internal AudioSource source;
 
@@ -27,29 +28,9 @@ public class SoundEffect {
             return;
         }
 
-        // generate audio source
-        //if (finishPlayingBeforeDestroy) {
-
-        //    string name = $"SoundEffect host for {host.name}";
-
-        //    // source host gameObject
-        //    var sourceHostGo = GameObject.Find(name);
-        //    if (sourceHostGo == null) sourceHostGo = new GameObject(name);
-
-        //    // source host component
-        //    if (!sourceHostGo.TryGetComponent(out SoundEffectSourceHost sourceHost)) sourceHost = sourceHostGo.AddComponent<SoundEffectSourceHost>();
-
-        //    // audio source
-        //    source = sourceHost.gameObject.AddComponent<AudioSource>();
-
-        //    // destruction notifier
-        //    if (!host.TryGetComponent(out SoundEffectDestructionNotifier destruction)) destruction = host.AddComponent<SoundEffectDestructionNotifier>();
-        //    destruction.onDestroy += () => sourceHost.Destroy(soundTimeRemaining);
-        //}
-
         source = host.AddComponent<AudioSource>();
 
-        //source.outputAudioMixerGroup = GameManager.AudioManager.SoundGroup;
+        source.outputAudioMixerGroup = mixerGroup;
         source.loop = loop;
     }
 
@@ -86,29 +67,3 @@ public class SoundEffect {
         soundTimeRemaining = 0;
     }
 }
-
-//public class SoundEffectDestructionNotifier : MonoBehaviour {
-
-//    public event System.Action onDestroy;
-
-//    private void OnDestroy() {
-//        onDestroy?.Invoke();
-//    }
-//}
-
-//public class SoundEffectSourceHost : MonoBehaviour {
-
-//    private float timeToDestroy;
-
-//    public void Destroy(float time) {
-
-//        timeToDestroy = Mathf.Max(timeToDestroy, time);
-//        name += " - Dying";
-
-//        if (this != null) StartCoroutine(WaitAFrame());
-//        IEnumerator WaitAFrame() {
-//            yield return null;
-//            GameObject.Destroy(gameObject, timeToDestroy - Time.time);
-//        }
-//    }
-//}
