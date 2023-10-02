@@ -836,12 +836,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1971236279534105441, guid: 02295c005e00f4682bc3a9571920298e,
-        type: 3}
-      propertyPath: sound
-      value: 
-      objectReference: {fileID: 11400000, guid: b8bfd0d5435a14c3491160202f0f7d81,
-        type: 2}
     - target: {fileID: 2531988308176006312, guid: 02295c005e00f4682bc3a9571920298e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -897,24 +891,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7990527544122706461, guid: 02295c005e00f4682bc3a9571920298e,
-        type: 3}
-      propertyPath: dashSound
-      value: 
-      objectReference: {fileID: 11400000, guid: 9b90e231e190749c1b1ffdd8955ec7b3,
-        type: 2}
-    - target: {fileID: 7990527544122706461, guid: 02295c005e00f4682bc3a9571920298e,
-        type: 3}
-      propertyPath: jumpSound
-      value: 
-      objectReference: {fileID: 11400000, guid: d3bbef4a3bf194c2683707394f198037,
-        type: 2}
-    - target: {fileID: 7990527544122706461, guid: 02295c005e00f4682bc3a9571920298e,
-        type: 3}
-      propertyPath: stepSound
-      value: 
-      objectReference: {fileID: 11400000, guid: 33f9fe9df53384cea8c1ee5d55d2fde2,
-        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
