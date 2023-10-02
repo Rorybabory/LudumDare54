@@ -7,7 +7,8 @@ public class LargeDemon : MonoBehaviour
 {
     enum DemonState {IDLE, WALKING, ATTACK};
     DemonState state;
-    [SerializeField] private Transform playerTransform;
+    private static Transform playerTransform;
+ 
     [SerializeField] private float walkSpeed;
     [SerializeField] private float attackDistance;
     [SerializeField] private DemonSword sword;
@@ -21,7 +22,10 @@ public class LargeDemon : MonoBehaviour
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
 
-
+        if (playerTransform == null)
+        {
+            playerTransform = FindObjectOfType<PlayerMovement>().transform;
+        }
     }
 
     // Update is called once per frame
@@ -30,7 +34,7 @@ public class LargeDemon : MonoBehaviour
         
 
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
-        float target_angle = Mathf.Atan2(this.playerTransform.position.x - this.transform.position.x, this.playerTransform.position.z - this.transform.position.z);
+        float target_angle = Mathf.Atan2(playerTransform.position.x - this.transform.position.x, playerTransform.position.z - this.transform.position.z);
         target_angle *= 180.0f / Mathf.PI;
         Quaternion newrot = transform.rotation;
         newrot = Quaternion.Euler(0, target_angle, 0);
