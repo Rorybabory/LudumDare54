@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44e3644836a445a186c90574f6ace90c, type: 3}
-  m_Name: EnemyDamaged
+  m_Name: EnemyKilled
   m_EditorClassIdentifier: 
   raised:
     m_PersistentCalls:
