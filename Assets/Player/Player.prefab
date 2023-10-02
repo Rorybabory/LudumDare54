@@ -1228,6 +1228,8 @@ GameObject:
   - component: {fileID: 344300376740149176}
   - component: {fileID: 5517704374250298986}
   - component: {fileID: 7962992994584182779}
+  - component: {fileID: 4460293029999568402}
+  - component: {fileID: 5075205577590152833}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1507,7 +1509,19 @@ MonoBehaviour:
     <Ceiling>k__BackingField: 10
   damaged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: d30dfdcdbae1d704e8283b082531ab64, type: 2}
+        m_TargetAssemblyTypeName: Channels.Channel`1[[UnityEngine.GameObject, UnityEngine
+        m_MethodName: Raise
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7530099313873678454}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7962992994584182779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,6 +1537,62 @@ MonoBehaviour:
   ammunition:
     <Value>k__BackingField: 0
     <Ceiling>k__BackingField: 0
+--- !u!114 &4460293029999568402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7530099313873678454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0ada4603ef4f5aa5e6420efca259a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: {fileID: 11400000, guid: d30dfdcdbae1d704e8283b082531ab64, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 344300376740149176}
+        m_TargetAssemblyTypeName: SizeTransformer, Assembly-CSharp
+        m_MethodName: DecreaseSize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5075205577590152833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7530099313873678454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0ada4603ef4f5aa5e6420efca259a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: {fileID: 11400000, guid: cd86a81b9ee195142a663580615bf515, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 344300376740149176}
+        m_TargetAssemblyTypeName: SizeTransformer, Assembly-CSharp
+        m_MethodName: IncreaseSize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7533328424148146030
 GameObject:
   m_ObjectHideFlags: 0
