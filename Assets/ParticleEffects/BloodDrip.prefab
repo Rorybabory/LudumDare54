@@ -1487,7 +1487,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: -663110333, guid: 01093da8ac02e6d408e330c725a5ae21, type: 3}
+    - sprite: {fileID: 363437892, guid: 01093da8ac02e6d408e330c725a5ae21, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -4077,10 +4077,10 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.017513275
-          value: 0.63513565
-          inSlope: -0.64645725
-          outSlope: -0.64645725
+          time: 0
+          value: 0.37837982
+          inSlope: -0.37837982
+          outSlope: -0.37837982
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
@@ -4088,8 +4088,8 @@ ParticleSystem:
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -0.64645725
-          outSlope: -0.64645725
+          inSlope: -0.37837982
+          outSlope: -0.37837982
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334

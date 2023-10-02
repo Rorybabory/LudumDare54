@@ -7,7 +7,8 @@ public class LargeDemon : MonoBehaviour
 {
     enum DemonState {IDLE, WALKING, ATTACK};
     DemonState state;
-    [SerializeField] private Transform playerTransform;
+    private static Transform playerTransform;
+ 
     [SerializeField] private float walkSpeed;
     [SerializeField] private float attackDistance;
     [SerializeField] private DemonSword sword;
@@ -21,7 +22,10 @@ public class LargeDemon : MonoBehaviour
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
 
-
+        if (playerTransform == null)
+        {
+            playerTransform = FindObjectOfType<PlayerMovement>().transform;
+        }
     }
 
     // Update is called once per frame
@@ -30,7 +34,7 @@ public class LargeDemon : MonoBehaviour
         
 
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
-        float target_angle = Mathf.Atan2(this.playerTransform.position.x - this.transform.position.x, this.playerTransform.position.z - this.transform.position.z);
+        float target_angle = Mathf.Atan2(playerTransform.position.x - this.transform.position.x, playerTransform.position.z - this.transform.position.z);
         target_angle *= 180.0f / Mathf.PI;
         Quaternion newrot = transform.rotation;
         newrot = Quaternion.Euler(0, target_angle, 0);
@@ -45,7 +49,7 @@ public class LargeDemon : MonoBehaviour
         }else if (state == DemonState.WALKING)
         {
             animator.Play("Walk");
-            transform.rotation = Quaternion.Slerp(transform.rotation, newrot, Time.time * 0.001f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newrot, Time.time * 0.002f);
             Vector3 directionVector = transform.forward;
             characterController.Move(directionVector * Time.deltaTime * walkSpeed * dif);
             if (Vector3.Distance(transform.position, playerTransform.position) < attackDistance && dif > 0.99f)
@@ -64,6 +68,10 @@ public class LargeDemon : MonoBehaviour
                     Debug.Log("Deal Damage to the player!");
                     sword.hitplayer = false;
                     canHitPlayer = false;
+                    if (sword.damageable != null)
+                    {
+                        sword.damageable.TakeDamage(2);
+                    }
                 }
                 else
                 {
@@ -85,7 +93,7 @@ public class LargeDemon : MonoBehaviour
                 state = DemonState.WALKING;
                 canHitPlayer = true;
             }
-            transform.rotation = Quaternion.Slerp(transform.rotation, newrot, Time.time * 0.0003f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newrot, Time.time * 0.0004f);
 
         }
         

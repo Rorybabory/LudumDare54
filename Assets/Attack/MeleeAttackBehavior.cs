@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class MeleeAttackBehavior : AttackBehavior
 {
-
     public override void Attack()
     {
         this.ApplyDamage();
     }
-
-
 }

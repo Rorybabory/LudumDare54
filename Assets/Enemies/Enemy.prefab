@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter:
-    Value: 3
-    Maximum: 3
+    <Value>k__BackingField: 3
+    <Ceiling>k__BackingField: 3
   damaged:
     m_PersistentCalls:
       m_Calls: []
