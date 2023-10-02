@@ -317,9 +317,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8886836435963251308}
-  - {fileID: 8374349626668845649}
   - {fileID: 2490022914270621316}
+  - {fileID: 8886836435963251308}
   m_Father: {fileID: 7303199578886716144}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2662267416015289009
@@ -410,7 +409,7 @@ GameObject:
   - component: {fileID: 1054018493983843515}
   - component: {fileID: 2606197765448551569}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,7 +428,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8623560837212687311}
+  m_Father: {fileID: 2531988308176006312}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2205459430601562386
 MeshFilter:
@@ -1250,6 +1249,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8374349626668845649}
   - {fileID: 7303199578886716144}
   - {fileID: 8792175859094935582}
   - {fileID: 1579607617901814953}
@@ -1491,7 +1491,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   maximumScale: 30
   minimumScale: 2
-  anchoredToMiddle: {fileID: 8623560837212687311}
+  collider: {fileID: 8374349626668845649}
+  ranchoredToMiddle: {fileID: 8623560837212687311}
   anchoredToBottom: {fileID: 215141371784802387}
   renderTextureCanvas: {fileID: 1579607617901814953}
   rigidbody: {fileID: 260140560564070401}
