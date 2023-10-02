@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security;
 using UnityEngine;
 
@@ -11,6 +13,10 @@ public class WaveSpawner : MonoBehaviour {
     [SerializeField] private Transform[] spawnpoints;
 
     [SerializeField] private float waveDuration;
+
+    public int CurrentWave => this.currentWave;
+
+    public event Action<int> Spawned;
 
     private float waveTimer = Mathf.Infinity;
     private int points;
@@ -26,10 +32,11 @@ public class WaveSpawner : MonoBehaviour {
                 return;
             }
 
-            waves[currentWave].Spawn(spawnpoints);
+            var spawnedEnemies = waves[currentWave].Spawn(spawnpoints);
 
             currentWave++;
             waveTimer = 0;
+            this.Spawned?.Invoke(spawnedEnemies.Count());
         }
     }
 }
