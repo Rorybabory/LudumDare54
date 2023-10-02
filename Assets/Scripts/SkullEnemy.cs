@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SkullEnemy : MonoBehaviour
 {
+    [SerializeField] private float turnSpeed;
+
     // Start is called before the first frame update
     private static Transform playerTransform;
     [SerializeField] private GameObject fireballPrefab;
@@ -20,6 +22,8 @@ public class SkullEnemy : MonoBehaviour
     private Vector3 offset;
 
     private Rigidbody rb;
+
+    private Vector3 turnVel;
 
     void Start()
     {
@@ -56,12 +60,12 @@ public class SkullEnemy : MonoBehaviour
         float wave = Mathf.Sin(Time.time) * 0.35f;
         Vector3 temppos = transform.position;
         
+        Vector3 toPlayer = Quaternion.LookRotation(playerTransform.position - transform.position).eulerAngles;
+        transform.eulerAngles = new Vector3(
+            Mathf.SmoothDampAngle(transform.eulerAngles.x, toPlayer.x, ref turnVel.x, turnSpeed),
+            Mathf.SmoothDampAngle(transform.eulerAngles.y, toPlayer.y, ref turnVel.y, turnSpeed),
+            Mathf.SmoothDampAngle(transform.eulerAngles.z, toPlayer.z, ref turnVel.z, turnSpeed));
 
-        float target_angle = Mathf.Atan2(playerTransform.position.x - this.transform.position.x, playerTransform.position.z - this.transform.position.z);
-        target_angle *= 180.0f / Mathf.PI;
-        Quaternion newrot = transform.rotation;
-        newrot = Quaternion.Euler(0, target_angle, 0);
-        transform.rotation = Quaternion.Slerp(transform.rotation, newrot, Time.time * 0.001f);
         movetimer += Time.deltaTime;
         if (movetimer > timetomove)
         {
