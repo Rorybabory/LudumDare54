@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 [CreateAssetMenu(fileName = "Audio Manager", menuName = "Systems/Audio Manager")]
 public class AudioManager : ScriptableObject {
 
+    [System.Serializable]
     private class Group {
         public AudioMixerGroup mixer;
         public string volumeName;
@@ -26,6 +27,8 @@ public class AudioManager : ScriptableObject {
     public void Update() {
 
         void SetVolume(Group group, float volume) => mixer.SetFloat(group.volumeName, volume == 0 ? -80f : Mathf.Log10(volume) * maxVolume);
+
+        Debug.Log("update audio manager");
 
         SetVolume(master,   Settings.masterVolume);
         SetVolume(music,    Settings.musicVolume);
