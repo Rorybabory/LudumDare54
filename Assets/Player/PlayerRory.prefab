@@ -255,7 +255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177775911290695237}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.68196774, y: 0.6610082, z: 0.2480765, w: -0.19090897}
+  m_LocalRotation: {x: 0.6819679, y: 0.6610082, z: 0.24807641, w: -0.1909089}
   m_LocalPosition: {x: -1.5198547, y: -1.0949998, z: 1.7059996}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
@@ -2224,7 +2224,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7978089275167778672}
   m_HandleRect: {fileID: 3629850457273625823}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3719,7 +3719,7 @@ GameObject:
   - component: {fileID: 6594762283260203792}
   m_Layer: 0
   m_Name: PlayerRory
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3919,8 +3919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb26d9607a0d130498d9c4edccf1d521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
-  increment: 0.005
   curve:
     serializedVersion: 2
     m_Curve:
