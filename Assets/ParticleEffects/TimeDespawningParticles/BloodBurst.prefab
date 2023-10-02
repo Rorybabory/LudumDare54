@@ -5581,7 +5581,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 0}
+    m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -9753,7 +9753,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 74a5091d8707f334b9a5c31ef71a64ba, type: 3}
+  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -9909,6 +9909,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7735387634059082338, guid: 9fdb1f0318e74a44cbbf1aac27a672b2,
         type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735387634059082338, guid: 9fdb1f0318e74a44cbbf1aac27a672b2,
+        type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
       value: 13
       objectReference: {fileID: 0}
@@ -9926,6 +9931,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startColor.minColor.a
       value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735387634059082338, guid: 9fdb1f0318e74a44cbbf1aac27a672b2,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7735387634059082338, guid: 9fdb1f0318e74a44cbbf1aac27a672b2,
         type: 3}
