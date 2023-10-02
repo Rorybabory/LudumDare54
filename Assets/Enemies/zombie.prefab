@@ -610,6 +610,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c439b6c3d38a74343aca00d27a873320,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c439b6c3d38a74343aca00d27a873320,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c439b6c3d38a74343aca00d27a873320,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c439b6c3d38a74343aca00d27a873320,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.16166353
       objectReference: {fileID: 0}
@@ -657,6 +672,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c439b6c3d38a74343aca00d27a873320,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8554541218143746378, guid: c439b6c3d38a74343aca00d27a873320,
         type: 3}
@@ -1337,7 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 3
-  attackDistance: 3
+  attackDistance: 3.5
   passiveSFX: {fileID: 11400000, guid: 690ac698c1d6da9478f70c7b28121fa8, type: 2}
   deathSFX: {fileID: 0}
 --- !u!95 &6440307019110484761

@@ -18,7 +18,7 @@ public class Zombie : MonoBehaviour
     private Boolean canHitPlayer = false;
     private float turnSpeed = 0.1f;
     private Vector3 turnVel;
-
+    private static Transform groundcheck;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +31,8 @@ public class Zombie : MonoBehaviour
             playerTransform = FindObjectOfType<PlayerMovement>().transform;
             playerDamage = playerTransform.gameObject.GetComponent<Damageable>();
         }
+        groundcheck = GameObject.FindWithTag("GroundCheck").transform;
+
         passiveSFX.Init(gameObject);
         passiveSFX.Play();
         deathSFX.Init(gameObject);
@@ -56,7 +58,7 @@ public class Zombie : MonoBehaviour
         Quaternion newrot = transform.rotation;
         newrot = Quaternion.Euler(0, target_angle, 0);
         float dif = Mathf.Abs(Quaternion.Dot(transform.rotation, newrot));
-        float distToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+        float distToPlayer = Vector3.Distance(transform.position, groundcheck.position);
 
         Vector3 toPlayer = Quaternion.LookRotation(playerTransform.position - transform.position).eulerAngles;
         transform.eulerAngles = new Vector3(
