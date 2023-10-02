@@ -21,6 +21,7 @@ public class MeleeScript : MonoBehaviour
     {
         MeleeSound.Init(gameObject);
         GunRecoverySound.Init(gameObject);
+        BulletDropSound.Init(gameObject);
     }
 
     // Update is called once per frame
