@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 900989792848935817}
+  - component: {fileID: 855069238568037260}
+  - component: {fileID: 5297978594876716926}
   m_Layer: 0
   m_Name: WaveManager
   m_TagString: Untagged
@@ -31,3 +33,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &855069238568037260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8121919810567848421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37afc0f6831654e4aad234f3037de1f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWave: 0
+  waves:
+  - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
+  - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
+  - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
+  - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
+  - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
+  - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
+  - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
+  - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
+  - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
+  - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
+  spawnpoints: []
+  waveDuration: 20
+--- !u!114 &5297978594876716926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8121919810567848421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c61a9d6a8e4386881baedf54e12bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 855069238568037260}
+  enemyKilledChannel: {fileID: 11400000, guid: cd86a81b9ee195142a663580615bf515, type: 2}
+  numberOfWavesRequiredToWin: 10
+  victoryScreen: {fileID: 0}
