@@ -255,8 +255,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177775911290695237}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.2870615, y: -0.79235876, z: -0.18307905, w: 0.50620687}
-  m_LocalPosition: {x: -1.8582196, y: -1.2162546, z: 2.886783}
+  m_LocalRotation: {x: 0.68196774, y: 0.6610082, z: 0.2480765, w: -0.19090897}
+  m_LocalPosition: {x: -1.5198547, y: -1.0949998, z: 1.7059996}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2224,7 +2224,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7978089275167778672}
   m_HandleRect: {fileID: 3629850457273625823}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3715,8 +3715,8 @@ GameObject:
   - component: {fileID: 5636818255455979873}
   - component: {fileID: 8180821913685686793}
   - component: {fileID: 6436182705155428187}
-  - component: {fileID: 6594762283260203792}
   - component: {fileID: 8145099230424238709}
+  - component: {fileID: 6594762283260203792}
   m_Layer: 0
   m_Name: PlayerRory
   m_TagString: Untagged
@@ -3887,6 +3887,7 @@ MonoBehaviour:
   hitScanLayerMask:
     serializedVersion: 2
     m_Bits: 251
+  cam: {fileID: 0}
 --- !u!114 &6635987228601357092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3995,34 +3996,6 @@ MonoBehaviour:
   ammunition:
     <Value>k__BackingField: 0
     <Ceiling>k__BackingField: 0
---- !u!114 &6594762283260203792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6268045917425728623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c0ada4603ef4f5aa5e6420efca259a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  channel: {fileID: 11400000, guid: d30dfdcdbae1d704e8283b082531ab64, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5636818255455979873}
-        m_TargetAssemblyTypeName: SizeTransformer, Assembly-CSharp
-        m_MethodName: DecreaseSize
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &8145099230424238709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4042,6 +4015,34 @@ MonoBehaviour:
       - m_Target: {fileID: 5636818255455979873}
         m_TargetAssemblyTypeName: SizeTransformer, Assembly-CSharp
         m_MethodName: IncreaseSize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6594762283260203792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6268045917425728623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0ada4603ef4f5aa5e6420efca259a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: {fileID: 11400000, guid: d30dfdcdbae1d704e8283b082531ab64, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5636818255455979873}
+        m_TargetAssemblyTypeName: SizeTransformer, Assembly-CSharp
+        m_MethodName: DecreaseSize
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
