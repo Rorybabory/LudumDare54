@@ -2225,7 +2225,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3629850457273625823}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.48609725
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3709,14 +3709,9 @@ GameObject:
   - component: {fileID: 2823522320709893690}
   - component: {fileID: 4706855745540528221}
   - component: {fileID: 1141358381710387656}
-  - component: {fileID: 8548519840491155193}
-  - component: {fileID: 535910485268929523}
   - component: {fileID: 6635987228601357092}
   - component: {fileID: 5636818255455979873}
   - component: {fileID: 8180821913685686793}
-  - component: {fileID: 6436182705155428187}
-  - component: {fileID: 8145099230424238709}
-  - component: {fileID: 6594762283260203792}
   m_Layer: 0
   m_Name: PlayerRory
   m_TagString: Player
@@ -3837,7 +3832,14 @@ MonoBehaviour:
   meleeKey: 323
   meleeBehavior: {fileID: 1141358381710387656}
   rangedKey: 324
-  rangedBehavior: {fileID: 8548519840491155193}
+  rangedDamage: 1
+  camera: {fileID: 3231835704603899671}
+  hitScanLayerMask:
+    serializedVersion: 2
+    m_Bits: 187
+  shootSound: {fileID: 11400000, guid: b8bfd0d5435a14c3491160202f0f7d81, type: 2}
+  bloodParticles: {fileID: 2233219379425680813, guid: e985e3bf03031a04e88fad5e95e52301,
+    type: 3}
   meleeAnimator: {fileID: 140627276698923579}
 --- !u!114 &1141358381710387656
 MonoBehaviour:
@@ -3853,41 +3855,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitScanner: {fileID: 6635987228601357092}
   damageAmount: 1
---- !u!114 &8548519840491155193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6268045917425728623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd3f336fc20d02b44a9afbaa10b5f7ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitScanner: {fileID: 535910485268929523}
-  damageAmount: 1
-  stock: {fileID: 7446887337535423869}
-  sound: {fileID: 11400000, guid: b8bfd0d5435a14c3491160202f0f7d81, type: 2}
-  gunTip: {fileID: 5676834256152108374}
-  effects: {fileID: 5760661825213098197, guid: 98738a19347981748b136b9c01cc2ebd, type: 3}
---- !u!114 &535910485268929523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6268045917425728623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b2d6dc965410ae458aaa968a4f1a5a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitScanOrigin: {fileID: 1783937557006901735}
-  hitScanLayerMask:
-    serializedVersion: 2
-    m_Bits: 251
-  cam: {fileID: 0}
 --- !u!114 &6635987228601357092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3974,77 +3941,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 6268045917425728623}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6436182705155428187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6268045917425728623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8847223892da4dea9d72964e26bb1a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammunition:
-    <Value>k__BackingField: 0
-    <Ceiling>k__BackingField: 0
---- !u!114 &8145099230424238709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6268045917425728623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c0ada4603ef4f5aa5e6420efca259a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  channel: {fileID: 11400000, guid: cd86a81b9ee195142a663580615bf515, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5636818255455979873}
-        m_TargetAssemblyTypeName: SizeTransformer, Assembly-CSharp
-        m_MethodName: IncreaseSize
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6594762283260203792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6268045917425728623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c0ada4603ef4f5aa5e6420efca259a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  channel: {fileID: 11400000, guid: d30dfdcdbae1d704e8283b082531ab64, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5636818255455979873}
-        m_TargetAssemblyTypeName: SizeTransformer, Assembly-CSharp
-        m_MethodName: DecreaseSize
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4512,7 +4408,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 996490343617508318}
-  - component: {fileID: 6430329917751109128}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -4536,26 +4431,6 @@ Transform:
   - {fileID: 4750785247620132688}
   m_Father: {fileID: 1271643902991174634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6430329917751109128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7630574070933909554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b87fe50cf98ed948aabb00615df0aeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Animator: {fileID: 140627276698923579}
-  MeleeSound: {fileID: 11400000, guid: 2cc4320f1bcf5b640a9b9114df67f436, type: 2}
-  GunRecoverySound: {fileID: 11400000, guid: 1add452d2d28c574d97d8a7fdf43cef9, type: 2}
-  BulletDropSound: {fileID: 11400000, guid: b2be379607b9e0548bef725ce462ad40, type: 2}
-  wait: 0
-  clipname: 
-  shouldAttack: 0
-  shouldShoot: 0
 --- !u!1 &7633620223207741860
 GameObject:
   m_ObjectHideFlags: 0
