@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -16,13 +17,15 @@ public class MeleeScript : MonoBehaviour
     [SerializeField]
     private SoundEffect BulletDropSound;
 
+    public Boolean wait = false;
+
     // Start is called before the first frame update
     void Start()
     {
         MeleeSound.Init(gameObject);
         GunRecoverySound.Init(gameObject);
     }
-
+    public Boolean getWait() { return wait; }
     // Update is called once per frame
     void Update()
     {
@@ -44,7 +47,12 @@ public class MeleeScript : MonoBehaviour
         IEnumerator Wait()
         {
             Animator.SetBool(name, true);
+            yield return new WaitForSeconds(0.01f);
+            wait = true;
+
             yield return new WaitForSeconds(time);
+            wait = false;
+
             Animator.SetBool(name, false);
         }
     }
@@ -69,9 +77,9 @@ public class MeleeScript : MonoBehaviour
     }
     void Shoot() 
     {
-        GunRecoverySound?.Play();
+       // GunRecoverySound?.Play();
         SetBool("ShouldShoot", 0.45f);
-        PlayBulletDrop(0.7f);
+        //PlayBulletDrop(0.7f);
        
     }
 }
