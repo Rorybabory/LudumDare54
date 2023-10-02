@@ -7,10 +7,12 @@ public class MeleeHitScanner : HitScan
 {
     [SerializeField]
     private Transform origin;
+
     [SerializeField]
     private float radius = 3f;
+    [Range(-1f, +1f)]
     [SerializeField]
-    private float angle = 80f;
+    private float angle = 0.22f;
     [SerializeField]
     private LayerMask layerMask;
     [SerializeField]
@@ -25,7 +27,7 @@ public class MeleeHitScanner : HitScan
     public float Radius
     {
         get => this.radius;
-        set => this.radius = value;
+        set => this.radius = Mathf.Clamp(value, -1, +1);
     }
 
     public float Angle
@@ -45,11 +47,33 @@ public class MeleeHitScanner : HitScan
         set => this.triggerInteraction = value;
     }
 
+    private void Awake()
+    {
+        if (this.Origin == null)
+        {
+            this.Origin = this.transform;
+        }
+    }
+
     public override Collider[] ScanForColliders()
     {
+        var colliders = new List<Collider>();
         var collidersInRadius =
             Physics.OverlapSphere(this.Origin.position, this.Radius, this.LayerMask, this.TriggerInteraction);
-        
-        return collidersInRadius;
+
+        foreach (var colliderInRadius in collidersInRadius)
+        {
+            var thisTransform = this.transform;
+            var forward = thisTransform.forward;
+            var directionToEnemy = (colliderInRadius.transform.position - thisTransform.position).normalized;
+            var dot = Vector3.Dot(forward, directionToEnemy);
+
+            if (dot > this.Angle)
+            {
+                colliders.Add(colliderInRadius);
+            }
+        }
+
+        return colliders.ToArray();
     }
 }

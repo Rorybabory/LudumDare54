@@ -1115,8 +1115,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4424556982211606228, guid: 02295c005e00f4682bc3a9571920298e,
         type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 1
+      propertyPath: angle
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 7199003837715198681, guid: 02295c005e00f4682bc3a9571920298e,
         type: 3}

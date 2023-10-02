@@ -1438,7 +1438,7 @@ MonoBehaviour:
   angle: 80
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   triggerInteraction: 1
 --- !u!114 &344300376740149176
 MonoBehaviour:
@@ -1512,8 +1512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter:
-    <Value>k__BackingField: 0
-    <Ceiling>k__BackingField: 0
+    <Value>k__BackingField: 3
+    <Ceiling>k__BackingField: 3
   damaged:
     m_PersistentCalls:
       m_Calls: []
