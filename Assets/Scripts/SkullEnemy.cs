@@ -6,7 +6,7 @@ using UnityEngine;
 public class SkullEnemy : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private Transform playerTransform;
+    private static Transform playerTransform;
     [SerializeField] private GameObject fireballPrefab;
     private Vector3 basePos;
 
@@ -30,6 +30,10 @@ public class SkullEnemy : MonoBehaviour
         timetoshoot = Random.Range(0.5f, 4.0f);
         shoottimer = 0;
         rb = GetComponent<Rigidbody>();
+        if (playerTransform == null )
+        {
+            playerTransform = FindObjectOfType<PlayerMovement>().transform;
+        }
     }
 
     public void TakeDamage(GameObject g)
@@ -53,7 +57,7 @@ public class SkullEnemy : MonoBehaviour
         Vector3 temppos = transform.position;
         
 
-        float target_angle = Mathf.Atan2(this.playerTransform.position.x - this.transform.position.x, this.playerTransform.position.z - this.transform.position.z);
+        float target_angle = Mathf.Atan2(playerTransform.position.x - this.transform.position.x, playerTransform.position.z - this.transform.position.z);
         target_angle *= 180.0f / Mathf.PI;
         Quaternion newrot = transform.rotation;
         newrot = Quaternion.Euler(0, target_angle, 0);
