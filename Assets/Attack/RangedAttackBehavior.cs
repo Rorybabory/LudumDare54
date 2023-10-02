@@ -6,6 +6,10 @@ public class RangedAttackBehavior : AttackBehavior
     private AmmunitionStock stock;
     [SerializeField]
     private SoundEffect sound;
+    [SerializeField]
+    private Transform gunTip;
+    [SerializeField]
+    private GameObject effects;
 
     void Start()
     {
@@ -24,6 +28,7 @@ public class RangedAttackBehavior : AttackBehavior
             this.stock.Decrement();
             this.ApplyDamage();
             sound.Play();
+            Instantiate(effects, gunTip);
             // TODO:
             // Play fire animation
             // Play muzzle flash VFX
