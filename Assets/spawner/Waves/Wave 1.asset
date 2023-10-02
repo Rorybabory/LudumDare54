@@ -20,3 +20,6 @@ MonoBehaviour:
   - prefab: {fileID: 2551830761109856811, guid: 016c54acde00e884e882f9f4b936aba2,
       type: 3}
     pointCost: 1
+  - prefab: {fileID: 8401546996397014101, guid: c755d9c88a3c05943a7251505bd8c73e,
+      type: 3}
+    pointCost: 1

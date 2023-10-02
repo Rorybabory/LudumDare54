@@ -15,6 +15,5 @@ public class Killable : MonoBehaviour
         Destroy(this.gameObject);
         
         this.Killed?.Invoke();
-        this.killed?.Invoke();
     }
 }
