@@ -919,7 +919,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3892040417360962825}
-  - component: {fileID: 9219311401526497355}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -943,23 +942,6 @@ Transform:
   - {fileID: 3087300767843920506}
   m_Father: {fileID: 2662763549836417521}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9219311401526497355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3141976473889577186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b87fe50cf98ed948aabb00615df0aeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Animator: {fileID: 8951017940394536960}
-  MeleeSound: {fileID: 11400000, guid: 2cc4320f1bcf5b640a9b9114df67f436, type: 2}
-  GunRecoverySound: {fileID: 11400000, guid: 1add452d2d28c574d97d8a7fdf43cef9, type: 2}
-  BulletDropSound: {fileID: 11400000, guid: b2be379607b9e0548bef725ce462ad40, type: 2}
-  wait: 0
 --- !u!1 &3185063064976559455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,6 +1826,7 @@ MonoBehaviour:
   meleeBehavior: {fileID: 2454825005611054443}
   rangedKey: 324
   rangedBehavior: {fileID: 1971236279534105441}
+  meleeAnimator: {fileID: 0}
 --- !u!114 &2454825005611054443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1892,6 +1875,7 @@ MonoBehaviour:
   hitScanLayerMask:
     serializedVersion: 2
     m_Bits: 183
+  cam: {fileID: 0}
 --- !u!114 &4424556982211606228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1923,8 +1907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb26d9607a0d130498d9c4edccf1d521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
-  increment: 0.005
   curve:
     serializedVersion: 2
     m_Curve:
@@ -3506,12 +3488,6 @@ Transform:
 --- !u!4 &4547691990209817603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7904284601285762670, guid: 6995b9cd5823d9d47902e4e1823ed02e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3265939644505509265}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &8951017940394536960 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 6995b9cd5823d9d47902e4e1823ed02e,
     type: 3}
   m_PrefabInstance: {fileID: 3265939644505509265}
   m_PrefabAsset: {fileID: 0}
