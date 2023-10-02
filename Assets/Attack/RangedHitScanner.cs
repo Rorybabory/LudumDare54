@@ -8,7 +8,7 @@ public class RangedHitScanner : HitScan
 {
     [SerializeField] Transform hitScanOrigin;
     [SerializeField] LayerMask hitScanLayerMask;
-    private Camera cam;
+    [SerializeField] private Camera cam;
     void Start()
     {
         cam = GetComponentInChildren<Camera>();
@@ -18,7 +18,7 @@ public class RangedHitScanner : HitScan
         Ray ray = new Ray(cam.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0.0f)), cam.transform.forward);
         RaycastHit hit;
 
-      //  Debug.DrawRay(cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f)), cam.transform.forward);
+        Debug.DrawRay(cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f)), cam.transform.forward * Mathf.Infinity, Color.green, 4, false);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, hitScanLayerMask))
         {
             return new[] { hit.collider };

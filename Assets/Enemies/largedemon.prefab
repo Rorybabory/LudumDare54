@@ -845,6 +845,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4556201421668607414}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6cd7c2e4d1071234fb9d5659247b8f1e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2466858535772364193}
     - targetCorrespondingSourceObject: {fileID: 8288554639823566097, guid: 6cd7c2e4d1071234fb9d5659247b8f1e,
         type: 3}
       insertIndex: -1
@@ -976,8 +980,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter:
-    <Value>k__BackingField: 10
-    <Ceiling>k__BackingField: 10
+    <Value>k__BackingField: 6
+    <Ceiling>k__BackingField: 6
   damaged:
     m_PersistentCalls:
       m_Calls: []
@@ -1002,6 +1006,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &2466858535772364193
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7012056763698818160}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.7
+  m_Height: 8.01
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.78, z: 0}
 --- !u!4 &8415014402320544723 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7402054476448324878, guid: 6cd7c2e4d1071234fb9d5659247b8f1e,

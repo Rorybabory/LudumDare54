@@ -16,7 +16,7 @@ public abstract class AttackBehavior : MonoBehaviour
         {
             Damageable damagable = col.GetComponent<Damageable>();
             if (damagable == null) { continue; }
-
+            Debug.Log("hit enemy named:" + col.gameObject.name);
             damagable.TakeDamage(damageAmount);
         }
     }

@@ -34,7 +34,6 @@ public class MeleeScript : MonoBehaviour
     void Update()
     {
         AnimatorClipInfo[] info = this.Animator.GetCurrentAnimatorClipInfo(0);
-        Debug.Log(info[0].clip.name);
         clipname = info[0].clip.name;
         wait = Animator.GetBool("ShouldAttack") || Animator.GetBool("ShouldShoot");
 

@@ -29,7 +29,6 @@ public class WaveSpawner : MonoBehaviour {
         if (waveTimer > waveDuration) {
 
             if (currentWave >= waves.Length) {
-                Debug.Log("Done");
                 return;
             }
 

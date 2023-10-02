@@ -23,16 +23,16 @@ public class WaveObject : ScriptableObject {
         int points = this.points;
 
         while (enemies.Exists(e => points >= e.pointCost)) {
-            bool isSkull = !(UnityEngine.Random.Range(0, 1) > 0.4f);
-            Enemy enemy;
-            if (isSkull)
-            {
-                enemy = skull;
-            }else
-            {
-                enemy = enemies.Random();
-            }
+            bool isSkull = false;
+            
+            Enemy enemy = enemies.Random();
+            
             while (enemy.pointCost > points) enemy = enemies.Random();
+            if (enemy.prefab.name == "Skull")
+            {
+                isSkull = true;
+            }
+
             GameObject instance;
             if (isSkull)
             {
