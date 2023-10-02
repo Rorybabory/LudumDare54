@@ -51,7 +51,7 @@ public class SettingsMenu : MonoBehaviour {
         new Number("Target Framerate",                      Settings.frameRate,             10,     200,    10,         1,      false),
         new Number("V-Sync",                                Settings.vSync,                 0,      4,      1,          1,      false),
         new Bool("Fullscreen",                              Settings.fullscreen),
-        new Enum("Resolution",                              Settings.resolution, () => new(System.Array.ConvertAll(Screen.resolutions, r => new TMP_Dropdown.OptionData(r.ToString())))),
+       // new Enum("Resolution",                              Settings.resolution, () => new(System.Array.ConvertAll(Screen.resolutions, r => new TMP_Dropdown.OptionData(r.ToString())))),
 
         new Spacer(),
     };
