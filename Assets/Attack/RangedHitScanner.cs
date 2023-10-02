@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 public class RangedHitScanner : HitScan
 {
     [SerializeField] Transform hitScanOrigin;
+    [SerializeField] LayerMask hitScanLayerMask;
     private Camera cam;
     void Start()
     {
@@ -18,7 +19,7 @@ public class RangedHitScanner : HitScan
         RaycastHit hit;
 
       //  Debug.DrawRay(cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f)), cam.transform.forward);
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, hitScanLayerMask))
         {
             return new[] { hit.collider };
         }
