@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2858176346372140834}
   - component: {fileID: 2404750131086548933}
   m_Layer: 0
-  m_Name: BloodBurst
+  m_Name: MagmaBurst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,9 +222,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 2
+      minMaxState: 0
       minColor: {r: 0.654902, g: 0.1137255, b: 0.15294118, a: 1}
-      maxColor: {r: 0.6784314, g: 0.0627451, b: 0.13725491, a: 1}
+      maxColor: {r: 1, g: 0.50704855, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
