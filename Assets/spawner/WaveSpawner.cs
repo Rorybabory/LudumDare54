@@ -26,9 +26,6 @@ public class WaveSpawner : MonoBehaviour {
                 return;
             }
 
-            _ = waves;
-            _ = spawnpoints;
-
             waves[currentWave].Spawn(spawnpoints);
 
             currentWave++;
