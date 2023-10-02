@@ -1226,7 +1226,8 @@ GameObject:
   - component: {fileID: 7572119920852936854}
   - component: {fileID: 4424556982211606228}
   - component: {fileID: 344300376740149176}
-  - component: {fileID: 822112205081745565}
+  - component: {fileID: 5517704374250298986}
+  - component: {fileID: 7962992994584182779}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1425,7 +1426,7 @@ MonoBehaviour:
   hitScanOrigin: {fileID: 8792175859094935582}
   hitScanLayerMask:
     serializedVersion: 2
-    m_Bits: 191
+    m_Bits: 183
 --- !u!114 &4424556982211606228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,7 +1441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
   radius: 3
-  angle: 80
+  angle: 0.22
   layerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -1489,21 +1490,6 @@ MonoBehaviour:
   anchoredToBottom: {fileID: 215141371784802387}
   renderTextureCanvas: {fileID: 1579607617901814953}
   rigidbody: {fileID: 260140560564070401}
---- !u!114 &7962992994584182779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7530099313873678454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8847223892da4dea9d72964e26bb1a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammunition:
-    <Value>k__BackingField: 0
-    <Ceiling>k__BackingField: 0
 --- !u!114 &5517704374250298986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1522,6 +1508,21 @@ MonoBehaviour:
   damaged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7962992994584182779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7530099313873678454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8847223892da4dea9d72964e26bb1a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammunition:
+    <Value>k__BackingField: 0
+    <Ceiling>k__BackingField: 0
 --- !u!1 &7533328424148146030
 GameObject:
   m_ObjectHideFlags: 0
