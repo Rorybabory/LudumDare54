@@ -21,13 +21,11 @@ public class RangedAttackBehavior : AttackBehavior
         }
         else
         {
-
             this.stock.Decrement();
             this.ApplyDamage();
             sound.Play();
             // TODO:
             // Play fire animation
-            // Play fire SFX
             // Play muzzle flash VFX
             // Play barrel smoke VFX
             // Start some kind of recovery cooldown & prevent firing until finished
