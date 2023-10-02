@@ -301,6 +301,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
         type: 3}
+      propertyPath: TrailModule.lifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: TrailModule.lifetime.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: CollisionModule.m_Dampen.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.12101936
       objectReference: {fileID: 0}
@@ -329,11 +349,84 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.minColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e702b34d3dae26a4e983e44149709a8d, type: 3}
+--- !u!1001 &15782486
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8401546996397014101, guid: c755d9c88a3c05943a7251505bd8c73e,
+        type: 3}
+      propertyPath: m_Name
+      value: zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210875907912115951, guid: c755d9c88a3c05943a7251505bd8c73e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.117435
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210875907912115951, guid: c755d9c88a3c05943a7251505bd8c73e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -316.19598
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210875907912115951, guid: c755d9c88a3c05943a7251505bd8c73e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 118.20753
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210875907912115951, guid: c755d9c88a3c05943a7251505bd8c73e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.75807685
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210875907912115951, guid: c755d9c88a3c05943a7251505bd8c73e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210875907912115951, guid: c755d9c88a3c05943a7251505bd8c73e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.65216523
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210875907912115951, guid: c755d9c88a3c05943a7251505bd8c73e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210875907912115951, guid: c755d9c88a3c05943a7251505bd8c73e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210875907912115951, guid: c755d9c88a3c05943a7251505bd8c73e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 81.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210875907912115951, guid: c755d9c88a3c05943a7251505bd8c73e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c755d9c88a3c05943a7251505bd8c73e, type: 3}
 --- !u!4 &60232016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1377449539490478576, guid: e702b34d3dae26a4e983e44149709a8d,
@@ -1573,7 +1666,32 @@ PrefabInstance:
     - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
         type: 3}
       propertyPath: ShapeModule.radiusThickness
-      value: 1.0000
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: TrailModule.lifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: TrailModule.lifetime.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: CollisionModule.m_Dampen.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1696,6 +1814,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
         type: 3}
+      propertyPath: TrailModule.lifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: TrailModule.lifetime.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: CollisionModule.m_Dampen.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -1724,6 +1862,11 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.minColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3091046590560775154, guid: e702b34d3dae26a4e983e44149709a8d,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1750,3 +1893,4 @@ SceneRoots:
   - {fileID: 1618326335}
   - {fileID: 1641268448}
   - {fileID: 1706391966}
+  - {fileID: 15782486}
