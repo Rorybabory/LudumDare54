@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter:
-    <Value>k__BackingField: 3
-    <Ceiling>k__BackingField: 3
+    <Value>k__BackingField: 1
+    <Ceiling>k__BackingField: 1
   damaged:
     m_PersistentCalls:
       m_Calls:
@@ -130,7 +130,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.4
+  m_Radius: 3.2
   m_Center: {x: 0, y: 0.36, z: 0.21}
 --- !u!114 &2745625333109321381
 MonoBehaviour:
@@ -260,6 +260,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7181560015305814256, guid: c217fb192fee0b94ca364416643f1d0e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -1909878425617812780, guid: c217fb192fee0b94ca364416643f1d0e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -270,10 +275,35 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: e6669c88422a5c145a5818e6a31df857, type: 2}
+    - target: {fileID: 146730464072350036, guid: c217fb192fee0b94ca364416643f1d0e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c217fb192fee0b94ca364416643f1d0e,
         type: 3}
       propertyPath: m_Name
       value: Skull
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c217fb192fee0b94ca364416643f1d0e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589330867288941081, guid: c217fb192fee0b94ca364416643f1d0e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799706940885637488, guid: c217fb192fee0b94ca364416643f1d0e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5160173237554235658, guid: c217fb192fee0b94ca364416643f1d0e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -338,6 +368,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283668928184115728, guid: 22be843e22dc6e34d922c67ac2710e43,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7953287884964527869, guid: 22be843e22dc6e34d922c67ac2710e43,
         type: 3}

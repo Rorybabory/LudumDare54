@@ -11,6 +11,7 @@ public class WaveSpawner : MonoBehaviour {
 
     [SerializeField] private WaveObject[] waves;
     [SerializeField] private Transform[] spawnpoints;
+    [SerializeField] private Transform[] spawnpointsSkull;
 
     [SerializeField] private float waveDuration;
 
@@ -32,7 +33,7 @@ public class WaveSpawner : MonoBehaviour {
                 return;
             }
 
-            var spawnedEnemies = waves[currentWave].Spawn(spawnpoints);
+            var spawnedEnemies = waves[currentWave].Spawn(spawnpoints, spawnpointsSkull);
 
             currentWave++;
             waveTimer = 0;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class WaveObject : ScriptableObject {
     public int points;
 
     public List<Enemy> enemies;
+    public Enemy skull;
 
     [System.Serializable]
     public class Enemy {
@@ -15,17 +17,30 @@ public class WaveObject : ScriptableObject {
         public int pointCost;
     }
 
-    public IEnumerable<GameObject> Spawn(Transform[] spawnpoints)
+    public IEnumerable<GameObject> Spawn(Transform[] spawnpoints, Transform[] spawnpoints_skull)
     {
         var list = new List<GameObject>();
         int points = this.points;
 
         while (enemies.Exists(e => points >= e.pointCost)) {
-
-            Enemy enemy = enemies.Random();
+            bool isSkull = !(UnityEngine.Random.Range(0, 1) > 0.4f);
+            Enemy enemy;
+            if (isSkull)
+            {
+                enemy = skull;
+            }else
+            {
+                enemy = enemies.Random();
+            }
             while (enemy.pointCost > points) enemy = enemies.Random();
-
-            var instance = Instantiate(enemy.prefab, spawnpoints.Random().position, Quaternion.identity);
+            GameObject instance;
+            if (isSkull)
+            {
+                instance = Instantiate(enemy.prefab, spawnpoints_skull.Random().position, Quaternion.identity);
+            }else
+            {
+                instance = Instantiate(enemy.prefab, spawnpoints.Random().position, Quaternion.identity);
+            }
             points -= enemy.pointCost;
 
             list.Add(instance);
