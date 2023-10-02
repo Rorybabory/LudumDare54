@@ -255,7 +255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177775911290695237}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.68196774, y: 0.6610082, z: 0.2480765, w: -0.19090897}
+  m_LocalRotation: {x: 0.6819679, y: 0.6610082, z: 0.24807641, w: -0.1909089}
   m_LocalPosition: {x: -1.5198549, y: -1.0949994, z: 1.7060002}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
@@ -3839,6 +3839,9 @@ MonoBehaviour:
     m_Bits: 187
   shootSound: {fileID: 11400000, guid: b8bfd0d5435a14c3491160202f0f7d81, type: 2}
   enemyHitSound: {fileID: 0}
+  gunTip: {fileID: 5676834256152108374}
+  shootEffects: {fileID: 5760661825213098197, guid: 98738a19347981748b136b9c01cc2ebd,
+    type: 3}
   bloodParticles: {fileID: 2233219379425680813, guid: e985e3bf03031a04e88fad5e95e52301,
     type: 3}
   meleeAnimator: {fileID: 140627276698923579}

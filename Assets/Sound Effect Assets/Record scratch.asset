@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2dc21f4ec05b4554b719d73e5ba9bbd, type: 3}
   m_Name: Record scratch
   m_EditorClassIdentifier: 
-  clip: []
+  clip:
+  - {fileID: 0}
   mixerGroup: {fileID: 0}
   volume: 1
   minPitch: 1

@@ -13,7 +13,8 @@ public class PlayerInput : MonoBehaviour {
     [SerializeField] private new Camera camera;
     [SerializeField] private LayerMask hitScanLayerMask;
     [SerializeField] private SoundEffect shootSound, enemyHitSound;
-    [SerializeField] private GameObject bloodParticles;
+    [SerializeField] private Transform gunTip;
+    [SerializeField] private GameObject shootEffects, bloodParticles;
 
     [SerializeField] private Animator meleeAnimator;
     private MeleeScript melee;
@@ -35,6 +36,7 @@ public class PlayerInput : MonoBehaviour {
 
         meleeAnimator.Play("Shoot");
         shootSound.Play();
+        Instantiate(shootEffects, gunTip);
 
         var ray = new Ray(camera.transform.position, camera.transform.forward);
 
