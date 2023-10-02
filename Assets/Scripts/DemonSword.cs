@@ -21,10 +21,12 @@ public class DemonSword : MonoBehaviour
     }
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.name == "PlayerCollider")
+        var player = other.GetComponentInParent<Damageable>();
+
+        if (player != null && player.CompareTag("Player"))
         {
             hitplayer = true;
-            damageable = other.gameObject.GetComponentInParent<Damageable>();
+            damageable = player;
         }
     }
 }
