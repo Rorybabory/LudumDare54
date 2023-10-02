@@ -989,6 +989,8 @@ MonoBehaviour:
   currentWave: 0
   waves:
   - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
+  - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
+  - {fileID: 11400000, guid: 1ca16545562da4eee88fde8005a94b20, type: 2}
   spawnpoints:
   - {fileID: 242182931}
   - {fileID: 2101935976}

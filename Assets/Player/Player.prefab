@@ -1410,7 +1410,7 @@ MonoBehaviour:
     clip:
     - {fileID: 8300000, guid: 9ef72c0837c0b4f4d802c6255600d1dd, type: 3}
     - {fileID: 8300000, guid: b0c4f8f35fa83e84fb72edd0d5e2e1a1, type: 3}
-    volume: 0.25
+    volume: 0.1
     minPitch: 0.95
     maxPitch: 1.05
     sequential: 0
