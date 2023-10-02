@@ -21,7 +21,15 @@ public class WaveSpawner : MonoBehaviour {
 
     private float waveTimer = Mathf.Infinity;
     private int points;
+    void Start()
+    {
+        var spawnedEnemies = waves[currentWave].Spawn(spawnpoints, spawnpointsSkull);
 
+        currentWave++;
+        waveTimer = 0;
+        this.Spawned?.Invoke(spawnedEnemies.Count());
+
+    }
     private void Update() {
 
         waveTimer += Time.deltaTime;
@@ -32,11 +40,6 @@ public class WaveSpawner : MonoBehaviour {
                 return;
             }
 
-            var spawnedEnemies = waves[currentWave].Spawn(spawnpoints, spawnpointsSkull);
-
-            currentWave++;
-            waveTimer = 0;
-            this.Spawned?.Invoke(spawnedEnemies.Count());
         }
     }
 }
