@@ -354,18 +354,33 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 6208894504342587618, guid: a6423723e508298459115f245c312289,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5198547
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208894504342587618, guid: a6423723e508298459115f245c312289,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.0949998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208894504342587618, guid: a6423723e508298459115f245c312289,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.7059996
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208894504342587618, guid: a6423723e508298459115f245c312289,
+        type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.19090897
+      value: -0.1909089
       objectReference: {fileID: 0}
     - target: {fileID: 6208894504342587618, guid: a6423723e508298459115f245c312289,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.68196774
+      value: 0.6819679
       objectReference: {fileID: 0}
     - target: {fileID: 6208894504342587618, guid: a6423723e508298459115f245c312289,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2480765
+      value: 0.24807641
       objectReference: {fileID: 0}
     - target: {fileID: 6268045917425728623, guid: a6423723e508298459115f245c312289,
         type: 3}
@@ -1498,6 +1513,7 @@ MonoBehaviour:
   - {fileID: 1219449619}
   - {fileID: 1325916311}
   - {fileID: 550429663}
+  waveBeatenSound: {fileID: 11400000, guid: f5a0f02be0d294423b0429d8538174b8, type: 2}
   waveDuration: 0
 --- !u!1 &1584370173
 GameObject:

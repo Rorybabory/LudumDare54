@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2dc21f4ec05b4554b719d73e5ba9bbd, type: 3}
+  m_Name: WaveBeaten
+  m_EditorClassIdentifier: 
+  clip:
+  - {fileID: 8300000, guid: 9c8e0178a7288b548ba9450b819d49a1, type: 3}
+  - {fileID: 8300000, guid: 36637d4bfb1888a4a85b31c6c68243a9, type: 3}
+  - {fileID: 8300000, guid: 98d543c49c35fd2438e28ff91f02712a, type: 3}
+  - {fileID: 8300000, guid: f6f0b071557ace942b45434504e736bb, type: 3}
+  - {fileID: 8300000, guid: 90fbdf1bd2e651446a4681b4ecd061e4, type: 3}
+  - {fileID: 8300000, guid: 5a967669e60fa8e4fa3feba1e013c7e1, type: 3}
+  - {fileID: 8300000, guid: a9a96557804745a41bda955427a6793c, type: 3}
+  - {fileID: 8300000, guid: 61d05e3e4e2e9dd4ab1eeb70f785c380, type: 3}
+  - {fileID: 8300000, guid: 53f1ccbb1450dcb47a1ae3bdb685b663, type: 3}
+  - {fileID: 8300000, guid: dbc4c25dd47ab5e4a9fcae1296a38b17, type: 3}
+  - {fileID: 8300000, guid: 512e6ea5d8a3b6e4682edbe073fbd6ea, type: 3}
+  - {fileID: 8300000, guid: 6ac995500f6804840ab99025bb7e9913, type: 3}
+  - {fileID: 8300000, guid: 7141032d640b9324f8f8e28540514c9d, type: 3}
+  - {fileID: 8300000, guid: 6dddbc7050513e644bdd292f64a888b7, type: 3}
+  - {fileID: 8300000, guid: 21c14931c3dbb2f4897563538dde3241, type: 3}
+  - {fileID: 8300000, guid: 54ce8409096c48e4da295d98d2dc7a64, type: 3}
+  - {fileID: 8300000, guid: 4b1b3faeefe6a784d88b44db2833104c, type: 3}
+  mixerGroup: {fileID: -7470543312832615280, guid: 282503efcc4d54b4d92accd3bae60dd5,
+    type: 2}
+  volume: 1
+  minPitch: 1
+  maxPitch: 1
+  sequential: 0
+  overlap: 1
+  loop: 0
