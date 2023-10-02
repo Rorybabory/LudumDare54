@@ -17,7 +17,7 @@ public class WaveObject : ScriptableObject {
         public int pointCost;
     }
 
-    public IEnumerable<GameObject> Spawn(Transform[] spawnpoints, Transform[] spawnpoints_skull)
+    public List<GameObject> Spawn(Transform[] spawnpoints, Transform[] spawnpoints_skull)
     {
         var list = new List<GameObject>();
         int points = this.points;

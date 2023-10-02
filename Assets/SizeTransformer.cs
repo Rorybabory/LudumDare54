@@ -45,9 +45,9 @@ public class SizeTransformer : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.I)) IncreaseSize();
+/*        if (Input.GetKey(KeyCode.I)) IncreaseSize();
         if (Input.GetKey(KeyCode.K)) DecreaseSize();
-        this.UpdateSize(size);
+*/        this.UpdateSize(size);
     }
 
     public static void IncreaseSize()
