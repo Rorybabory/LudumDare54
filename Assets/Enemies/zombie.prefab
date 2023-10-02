@@ -1337,7 +1337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 3
-  attackDistance: 2
+  attackDistance: 3
   passiveSFX: {fileID: 11400000, guid: 690ac698c1d6da9478f70c7b28121fa8, type: 2}
   deathSFX: {fileID: 0}
 --- !u!95 &6440307019110484761
