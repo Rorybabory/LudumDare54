@@ -20,13 +20,13 @@ public class Fireball : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Capsule")
+        if (other.gameObject.name == "PlayerCollider")
         {
-            Debug.Log("HIT PLAYER");
             GameObject player = other.gameObject.transform.parent.parent.gameObject;
             Damageable d = other.gameObject.GetComponentInParent<Damageable>();
             if (d != null)
             {
+                Debug.Log("HIT PLAYER");
                 d.TakeDamage(1);
                 Destroy(this.gameObject);
             }

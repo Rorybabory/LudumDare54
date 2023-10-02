@@ -13,7 +13,7 @@ public class Killable : MonoBehaviour
     public void Kill()
     {
         Destroy(this.gameObject);
-        
+        SizeTransformer.IncreaseSize();
         this.Killed?.Invoke();
     }
 }

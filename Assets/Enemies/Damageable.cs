@@ -11,12 +11,24 @@ public class Damageable : MonoBehaviour
     [SerializeField]
     private UnityEvent damaged;
 
+    private bool isPlayer = false;
+
     public IReadOnlyConstrainedValue<int> Counter => this.counter;
 
     public event Action Damaged;
 
+    void Start()
+    {
+        isPlayer = GetComponent<PlayerMovement>() != null;
+
+    }
     public void TakeDamage(int amount)
     {
+        if (isPlayer)
+        {
+            Debug.Log("Player Takes Damage");
+            SizeTransformer.DecreaseSize();
+        }
         var valueAfterDamage = Mathf.Clamp(this.Counter.Value - amount, 0, this.Counter.Ceiling);
 
         this.counter.Value = valueAfterDamage;
@@ -33,5 +45,6 @@ public class Damageable : MonoBehaviour
         
         this.Damaged?.Invoke();
         this.damaged?.Invoke();
+        
     }
 }

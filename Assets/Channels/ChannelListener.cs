@@ -46,6 +46,7 @@ namespace Channels
         
         private void OnChannelRaised(TData data)
         {
+            Debug.Log("Channel Raised");
             this.response?.Invoke(data);
         }
     }

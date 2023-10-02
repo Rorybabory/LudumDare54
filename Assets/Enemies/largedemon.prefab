@@ -856,7 +856,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8288554639823566097, guid: 6cd7c2e4d1071234fb9d5659247b8f1e,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8967417411000696405}
+      addedObject: {fileID: 4742290255148790964}
   m_SourcePrefab: {fileID: 100100000, guid: 6cd7c2e4d1071234fb9d5659247b8f1e, type: 3}
 --- !u!1 &2200115274696418352 stripped
 GameObject:
@@ -878,7 +878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitplayer: 0
   damageable: {fileID: 0}
---- !u!65 &8967417411000696405
+--- !u!65 &4742290255148790964
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1021,7 +1021,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

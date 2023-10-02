@@ -44,7 +44,6 @@ public class SkullEnemy : MonoBehaviour
     {
         if (g == this.gameObject)
         {
-            Debug.Log("Skull was hit");
             rb.velocity -= g.transform.forward * 20.0f;
         }
     }
@@ -52,7 +51,6 @@ public class SkullEnemy : MonoBehaviour
     void ShootFireball()
     {
         GameObject fireball = Instantiate(fireballPrefab, transform.position + new Vector3(0, -0.75f, 0.0f), transform.rotation);
-        Debug.Log("Shoot Fireball");
     }
     // Update is called once per frame
     void Update()

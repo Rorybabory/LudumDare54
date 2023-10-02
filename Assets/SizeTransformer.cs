@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using static UnityEngine.Rendering.DebugUI;
 
 public class SizeTransformer : MonoBehaviour
 {
     [Range(0, 1)]
+    public static float size = 0f;
     [SerializeField]
-    private float size = 0f;
-    [SerializeField]
-    private float increment = 0.05f;
+    private static float increment = 0.05f;
     [SerializeField]
     private AnimationCurve curve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
     [SerializeField]
@@ -25,7 +25,7 @@ public class SizeTransformer : MonoBehaviour
 
     public float Size
     {
-        get => this.size;
+        get => size;
         private set => this.UpdateSize(value);
     }
 
@@ -34,8 +34,8 @@ public class SizeTransformer : MonoBehaviour
 
     public float Increment
     {
-        get => this.increment;
-        set => this.increment = value;
+        get => increment;
+        set => increment = value;
     }
     public AnimationCurve Curve
     {
@@ -47,21 +47,24 @@ public class SizeTransformer : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.I)) IncreaseSize();
         if (Input.GetKey(KeyCode.K)) DecreaseSize();
+        this.UpdateSize(size);
     }
 
-    public void IncreaseSize()
+    public static void IncreaseSize()
     {
-        this.Size += this.Increment;
+        size += increment;
+        Debug.Log("Increase the Size");
     }
 
-    public void DecreaseSize()
+    public static void DecreaseSize()
     {
-        this.Size -= this.Increment;
+        size -= increment;
+
     }
 
     public void ResetSize()
     {
-        this.Size = 0.5f;
+        size = 0.5f;
     }
 
     private void OnValidate()
@@ -70,7 +73,7 @@ public class SizeTransformer : MonoBehaviour
         // is running.
         if (Application.isPlaying)
         {
-            this.Size = this.size;
+            this.Size = size;
         }
     }
 
