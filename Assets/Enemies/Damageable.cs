@@ -26,7 +26,7 @@ public class Damageable : MonoBehaviour
     {
         if (isPlayer)
         {
-            Debug.Log("Player Takes Damage");
+            //Debug.Log("Player Takes Damage");
             SizeTransformer.DecreaseSize();
         }
         var valueAfterDamage = Mathf.Clamp(this.Counter.Value - amount, 0, this.Counter.Ceiling);

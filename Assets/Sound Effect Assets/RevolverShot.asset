@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2dc21f4ec05b4554b719d73e5ba9bbd, type: 3}
-  m_Name: Revolver
+  m_Name: RevolverShot
   m_EditorClassIdentifier: 
   clip:
   - {fileID: 8300000, guid: 9ef72c0837c0b4f4d802c6255600d1dd, type: 3}
