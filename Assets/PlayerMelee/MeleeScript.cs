@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Timers;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Windows;
 
@@ -18,7 +19,9 @@ public class MeleeScript : MonoBehaviour
     private SoundEffect BulletDropSound;
 
     public Boolean wait = false;
-
+    public String clipname = "";
+    public Boolean shouldAttack = false;
+    public Boolean shouldShoot = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,15 +32,22 @@ public class MeleeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse0))
+        AnimatorClipInfo[] info = this.Animator.GetCurrentAnimatorClipInfo(0);
+        Debug.Log(info[0].clip.name);
+        clipname = info[0].clip.name;
+        wait = Animator.GetBool("ShouldAttack") || Animator.GetBool("ShouldShoot");
+
+        /*if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse0))
         {
+            shouldAttack = true;
             Attack();
         }
         if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse1))
         {
+            shouldShoot = true;
             Shoot();
             
-        }
+        }*/
     }
 
     private void SetBool(string name, float time)
@@ -47,7 +57,7 @@ public class MeleeScript : MonoBehaviour
         IEnumerator Wait()
         {
             Animator.SetBool(name, true);
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.1f);
             wait = true;
 
             yield return new WaitForSeconds(time);
@@ -71,15 +81,14 @@ public class MeleeScript : MonoBehaviour
     void Attack() 
     {
         MeleeSound?.Play();
-        SetBool("ShouldAttack", 1.7f);
-        
-      
+        SetBool("ShouldAttack", 0.8f);
+
     }
     void Shoot() 
     {
-       // GunRecoverySound?.Play();
-        SetBool("ShouldShoot", 0.45f);
-        //PlayBulletDrop(0.7f);
-       
+        /*GunRecoverySound?.Play();*/
+        SetBool("ShouldShoot", 0.8f);
+/*        PlayBulletDrop(0.7f);
+*/       
     }
 }

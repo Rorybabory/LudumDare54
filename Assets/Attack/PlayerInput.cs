@@ -11,26 +11,31 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private KeyCode rangedKey;
     [SerializeField] private AttackBehavior rangedBehavior;
 
+    [SerializeField] Animator meleeAnimator; 
     private MeleeScript melee;
+
+    
 
     void Start()
     {
-        melee = GetComponentInChildren<MeleeScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("melee wait: " + melee.wait);
-        if (melee.wait == true)
+        AnimatorClipInfo[] info = meleeAnimator.GetCurrentAnimatorClipInfo(0);
+        if (info[0].clip.name != "Human_Idle")
         {
             return;
         }
-        if (Input.GetKeyDown(meleeKey)) {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && info[0].clip.name != "Human_Melee")
+        {
+            meleeAnimator.Play("Melee");
             meleeBehavior.Attack();
         }
-        if (Input.GetKeyDown(rangedKey))
+        if (Input.GetKeyDown(KeyCode.Mouse1) && info[0].clip.name != "Human_Shoot")
         {
+            meleeAnimator.Play("Shoot");
             rangedBehavior.Attack();
         }
     }
