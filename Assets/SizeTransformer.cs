@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -79,10 +80,19 @@ public class SizeTransformer : MonoBehaviour
 
     private void UpdateSize(float newSize)
     {
+        if (SceneManager.GetActiveScene().name != "Gameplay")
+        {
+            return;
+        }
         float worldSize = WorldSize(size),
               newWorldSize = WorldSize(newSize),
               worldDiff = newWorldSize - worldSize;
-
+        if (size < 0)
+        {
+            SceneManager.LoadScene("Scenes/Game/Game Over", LoadSceneMode.Single);
+            size = 0;
+            return;
+        }
         size = Mathf.Clamp01(newSize);
 
         // transform scale
