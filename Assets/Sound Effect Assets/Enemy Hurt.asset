@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2dc21f4ec05b4554b719d73e5ba9bbd, type: 3}
+  m_Name: Enemy Hurt
+  m_EditorClassIdentifier: 
+  clip:
+  - {fileID: 8300000, guid: 0ba5d9284aed0644288f3e9a92b76501, type: 3}
+  - {fileID: 8300000, guid: 9cded485d2e1ba545afa3695684b1b62, type: 3}
+  - {fileID: 8300000, guid: 590a6e0de5c01924b8e9228399a6e338, type: 3}
+  - {fileID: 8300000, guid: e282f9018644fa541b316e65071f2c57, type: 3}
+  mixerGroup: {fileID: -8765888682129236917, guid: 282503efcc4d54b4d92accd3bae60dd5,
+    type: 2}
+  volume: 1
+  minPitch: 1
+  maxPitch: 1
+  sequential: 0
+  overlap: 1
+  loop: 0

@@ -12,7 +12,7 @@ public class PlayerInput : MonoBehaviour {
     [SerializeField] private int rangedDamage;
     [SerializeField] private new Camera camera;
     [SerializeField] private LayerMask hitScanLayerMask;
-    [SerializeField] private SoundEffect shootSound;
+    [SerializeField] private SoundEffect shootSound, enemyHitSound;
     [SerializeField] private GameObject bloodParticles;
 
     [SerializeField] private Animator meleeAnimator;
@@ -20,6 +20,7 @@ public class PlayerInput : MonoBehaviour {
 
     private void Start() {
         shootSound.Init(gameObject);
+        enemyHitSound.Init(gameObject);
     }
 
     private void Update() {
@@ -40,6 +41,7 @@ public class PlayerInput : MonoBehaviour {
         if (Physics.Raycast(ray, out var hit, Mathf.Infinity, hitScanLayerMask)
             && hit.collider.TryGetComponent(out Damageable damageable)) {
 
+            enemyHitSound.Play();
             damageable.TakeDamage(rangedDamage);
             Instantiate(bloodParticles, hit.point, Quaternion.identity);
         }
