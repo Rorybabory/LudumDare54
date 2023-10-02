@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28288832, g: 0.046153177, b: 0.004111208, a: 1}
+  m_Sun: {fileID: 1123708306}
+  m_IndirectSpecularColor: {r: 0.28297773, g: 0.0461611, b: 0.004154541, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: eba0277fdbc1e5a45aa69a867c75e5a8,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -947,6 +948,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HellOutsideCage
       objectReference: {fileID: 0}
+    - target: {fileID: 1044258058884700080, guid: aa9b730b9719f9c4abeb2c833ecb1331,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4368447661896621262, guid: aa9b730b9719f9c4abeb2c833ecb1331,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1057,11 +1063,52 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.39
       objectReference: {fileID: 0}
+    - target: {fileID: 8854393852463610348, guid: aa9b730b9719f9c4abeb2c833ecb1331,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.74160796
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854393852463610348, guid: aa9b730b9719f9c4abeb2c833ecb1331,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.072640665
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854393852463610348, guid: aa9b730b9719f9c4abeb2c833ecb1331,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6650599
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854393852463610348, guid: aa9b730b9719f9c4abeb2c833ecb1331,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.049358923
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854393852463610348, guid: aa9b730b9719f9c4abeb2c833ecb1331,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 177.588
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854393852463610348, guid: aa9b730b9719f9c4abeb2c833ecb1331,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 96.023
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854393852463610348, guid: aa9b730b9719f9c4abeb2c833ecb1331,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 170.213
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa9b730b9719f9c4abeb2c833ecb1331, type: 3}
+--- !u!108 &1123708306 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 8000145977450978229, guid: aa9b730b9719f9c4abeb2c833ecb1331,
+    type: 3}
+  m_PrefabInstance: {fileID: 1123708305}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1287062292
 PrefabInstance:
   m_ObjectHideFlags: 0
