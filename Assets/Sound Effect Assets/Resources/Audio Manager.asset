@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3f8ee7e3ddc429d9d89a89aea8867e, type: 3}
+  m_Name: Audio Manager
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 282503efcc4d54b4d92accd3bae60dd5, type: 2}
+  master:
+    mixer: {fileID: 24300002, guid: 282503efcc4d54b4d92accd3bae60dd5, type: 2}
+    volumeName: MasterVolume
+  music:
+    mixer: {fileID: -1560213400180898442, guid: 282503efcc4d54b4d92accd3bae60dd5,
+      type: 2}
+    volumeName: MusicVolume
+  ambience:
+    mixer: {fileID: 8072838047331723726, guid: 282503efcc4d54b4d92accd3bae60dd5, type: 2}
+    volumeName: AmbienceVolume
+  sound:
+    mixer: {fileID: -8765888682129236917, guid: 282503efcc4d54b4d92accd3bae60dd5,
+      type: 2}
+    volumeName: SoundVolume
+  voice:
+    mixer: {fileID: -7470543312832615280, guid: 282503efcc4d54b4d92accd3bae60dd5,
+      type: 2}
+    volumeName: VoiceVolume
+  maxVolume: 30

@@ -7,10 +7,9 @@ public static class Settings {
     private static string Key(string key) => string.Concat(KeyPrefix, key);
 
     private static AudioManager _audioManager;
-    private static AudioManager AudioManager => _audioManager == null ? _audioManager = Resources.Load<AudioManager>("") : _audioManager;
+    private static AudioManager AudioManager => _audioManager == null ? _audioManager = Resources.Load<AudioManager>("Audio Manager") : _audioManager;
 
     private static void SetResolution(this Resolution resolution) => Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-
 
     public static readonly Entry
 
@@ -56,7 +55,7 @@ public static class Settings {
         masterVolume        = new Entry(Key(nameof(masterVolume)),          0.5f)   // number
             .CustomSet(updateAudio);
 
-    private static System.Action<Entry> updateAudio = value => AudioManager.Update();
+    private static readonly System.Action<Entry> updateAudio = value => AudioManager.Update();
 
     [RuntimeInitializeOnLoadMethod]
     private static void ApplyCustomSetSettings() {
