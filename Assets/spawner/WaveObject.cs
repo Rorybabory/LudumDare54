@@ -15,8 +15,9 @@ public class WaveObject : ScriptableObject {
         public int pointCost;
     }
 
-    public void Spawn(Transform[] spawnpoints) {
-
+    public IEnumerable<GameObject> Spawn(Transform[] spawnpoints)
+    {
+        var list = new List<GameObject>();
         int points = this.points;
 
         while (enemies.Exists(e => points >= e.pointCost)) {
@@ -24,9 +25,13 @@ public class WaveObject : ScriptableObject {
             Enemy enemy = enemies.Random();
             while (enemy.pointCost > points) enemy = enemies.Random();
 
-            Instantiate(enemy.prefab, spawnpoints.Random().position, Quaternion.identity);
+            var instance = Instantiate(enemy.prefab, spawnpoints.Random().position, Quaternion.identity);
             points -= enemy.pointCost;
+
+            list.Add(instance);
         }
+
+        return list;
     }
 }
 
