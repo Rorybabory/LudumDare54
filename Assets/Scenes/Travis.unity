@@ -1717,6 +1717,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7962992994584182779, guid: 02295c005e00f4682bc3a9571920298e,
+        type: 3}
+      propertyPath: ammunition.<Value>k__BackingField
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7962992994584182779, guid: 02295c005e00f4682bc3a9571920298e,
+        type: 3}
+      propertyPath: ammunition.<Ceiling>k__BackingField
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
