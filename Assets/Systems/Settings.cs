@@ -18,21 +18,11 @@ public static class Settings {
     // controls
         cameraSensitivityX  = new Entry(Key(nameof(cameraSensitivityX)),    6),     // number
         cameraSensitivityY  = new Entry(Key(nameof(cameraSensitivityY)),    6),     // number
-        invertCameraX       = new Entry(Key(nameof(invertCameraX)),         0),     // bool
-        invertCameraY       = new Entry(Key(nameof(invertCameraY)),         0),     // bool
-        invertMoveX         = new Entry(Key(nameof(invertMoveX)),           0),     // bool
-        invertMoveY         = new Entry(Key(nameof(invertMoveY)),           0),     // bool
-        shiftSensitivity    = new Entry(Key(nameof(shiftSensitivity)),      10),    // number
 
     // gameplay
         fieldOfView         = new Entry(Key(nameof(fieldOfView)),           90),    // number
-        cameraTiltPercent   = new Entry(Key(nameof(cameraTiltPercent)),     1.0f),  // percent
-        cameraShakePercent  = new Entry(Key(nameof(cameraShakePercent)),    1.0f),  // percent
-        cameraBobPercent    = new Entry(Key(nameof(cameraBobPercent)),      1.0f),  // percent
-        showInputDisplay    = new Entry(Key(nameof(showInputDisplay)),      1),     // bool
 
     // graphics
-        showFPS             = new Entry(Key(nameof(showFPS)),               0),     // bool
         frameRate           = new Entry(Key(nameof(frameRate)),             60)     // number
             .CustomSet(value => Application.targetFrameRate = value),
         vSync               = new Entry(Key(nameof(vSync)),                 0)      // number
@@ -55,7 +45,7 @@ public static class Settings {
         masterVolume        = new Entry(Key(nameof(masterVolume)),          0.5f)   // number
             .CustomSet(updateAudio);
 
-    private static readonly System.Action<Entry> updateAudio = value => AudioManager.Update();
+    private static System.Action<Entry> updateAudio => value => AudioManager.Update();
 
     [RuntimeInitializeOnLoadMethod]
     private static void ApplyCustomSetSettings() {

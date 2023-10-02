@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private Vector2 cameraRotation;
     private new Rigidbody rigidbody;
+    private new Camera camera;
     private SizeTransformer sizeTransformer;
     private StateMachine stateMachine;
 
@@ -103,6 +104,7 @@ public class PlayerMovement : MonoBehaviour {
     private void Awake() {
 
         rigidbody = GetComponent<Rigidbody>();
+        camera = GetComponentInChildren<Camera>();
         sizeTransformer = GetComponent<SizeTransformer>();
 
         InitializeStateMachine();
@@ -122,11 +124,13 @@ public class PlayerMovement : MonoBehaviour {
     private void Update() {
 
         // input
-        Vector2 mouseDelta = new(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        Vector2 mouseDelta = new(Input.GetAxisRaw("Mouse X") * Settings.cameraSensitivityX, Input.GetAxisRaw("Mouse Y") * Settings.cameraSensitivityY);
         inputDir = new(Mathf.RoundToInt(Input.GetAxisRaw("Horizontal")), Mathf.RoundToInt(Input.GetAxisRaw("Vertical")));
         inputDirNormalized = ((Vector2)inputDir).normalized;
         jumpDown = jumpBuffer.Buffer(Input.GetKeyDown(KeyCode.Space));
         dashDown = dashBuffer.Buffer(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift));
+
+        camera.fieldOfView = Settings.fieldOfView;
 
         // cursor state
         Cursor.lockState = CursorLockMode.Locked;
