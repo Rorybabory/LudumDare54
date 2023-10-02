@@ -28,11 +28,12 @@ public class Fireball : MonoBehaviour
             if (d != null)
             {
                 d.TakeDamage(1);
+                Destroy(this.gameObject);
             }
             else {
                 Debug.LogError("Player does not have damageable component");
             }
         }
-        Destroy(this.gameObject);
+        
     }
 }

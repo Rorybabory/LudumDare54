@@ -879,7 +879,7 @@ Transform:
   m_GameObject: {fileID: 5221351484987157378}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.75}
+  m_LocalPosition: {x: 0, y: 0.08, z: 0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1226,8 +1226,7 @@ GameObject:
   - component: {fileID: 7572119920852936854}
   - component: {fileID: 4424556982211606228}
   - component: {fileID: 344300376740149176}
-  - component: {fileID: 7962992994584182779}
-  - component: {fileID: 5517704374250298986}
+  - component: {fileID: 822112205081745565}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1251,6 +1250,7 @@ Transform:
   - {fileID: 7303199578886716144}
   - {fileID: 8792175859094935582}
   - {fileID: 1579607617901814953}
+  - {fileID: 6999711564498184669}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7990527544122706461
@@ -1399,12 +1399,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitScanner: {fileID: 7572119920852936854}
   damageAmount: 1
-  stock: {fileID: 0}
+  stock: {fileID: 2102882739182448231}
   sound:
-    clip: []
+    clip:
+    - {fileID: 8300000, guid: 9ef72c0837c0b4f4d802c6255600d1dd, type: 3}
+    - {fileID: 8300000, guid: b0c4f8f35fa83e84fb72edd0d5e2e1a1, type: 3}
     volume: 1
-    minPitch: 1
-    maxPitch: 1
+    minPitch: 0.95
+    maxPitch: 1.05
     sequential: 0
     overlap: 1
     loop: 0
@@ -1421,6 +1423,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitScanOrigin: {fileID: 8792175859094935582}
+  hitScanLayerMask:
+    serializedVersion: 2
+    m_Bits: 191
 --- !u!114 &4424556982211606228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1512,8 +1517,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter:
-    <Value>k__BackingField: 3
-    <Ceiling>k__BackingField: 3
+    <Value>k__BackingField: 10
+    <Ceiling>k__BackingField: 10
   damaged:
     m_PersistentCalls:
       m_Calls: []
@@ -1582,6 +1587,53 @@ Transform:
   - {fileID: 7748555390932164919}
   m_Father: {fileID: 7303199578886716144}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8467783182422401789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6999711564498184669}
+  - component: {fileID: 2102882739182448231}
+  m_Layer: 0
+  m_Name: AmmoStock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6999711564498184669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8467783182422401789}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.676032, y: 0.04, z: -2.541632}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2531988308176006312}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2102882739182448231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8467783182422401789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8847223892da4dea9d72964e26bb1a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammunition:
+    <Value>k__BackingField: 99
+    <Ceiling>k__BackingField: 99
 --- !u!1 &8947583597576002683
 GameObject:
   m_ObjectHideFlags: 0
