@@ -29,12 +29,27 @@ public class MeleeScript : MonoBehaviour
         }
     }
 
+    private void SetBool(string name, float time)
+    {
+        StartCoroutine(Wait());
+
+        IEnumerator Wait()
+        {
+            Animator.SetBool(name, true);
+            yield return new WaitForSeconds(time);
+            Animator.SetBool(name, false);
+        }
+    }
+
     void Attack() 
     {
-        Animator.SetBool("ShouldAttack", true);
+        SetBool("ShouldAttack", 1.7f);
+        
+      
     }
     void Shoot() 
     {
-        Animator.SetBool("ShouldShoot", true);
+        SetBool("ShouldShoot", 0.45f);
+       
     }
 }

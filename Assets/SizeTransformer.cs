@@ -18,7 +18,8 @@ public class SizeTransformer : MonoBehaviour
     [SerializeField]
     private float minimumScale = 1f;
 
-    [SerializeField] private Transform anchoredToMiddle, anchoredToBottom, renderTextureCanvas;
+    [SerializeField] private new Transform collider;
+    [SerializeField] private Transform ranchoredToMiddle, anchoredToBottom;
 
     [SerializeField] private new Rigidbody rigidbody;
 
@@ -82,19 +83,14 @@ public class SizeTransformer : MonoBehaviour
         size = Mathf.Clamp01(newSize);
 
         // transform scale
-        Vector3 scale = transform.localScale;
+        Vector3 scale = collider.localScale;
         scale.y = newWorldSize;
-        transform.localScale = scale;
+        collider.localScale = scale;
 
         // position
         rigidbody.MovePosition(rigidbody.position + worldDiff / 2f * Vector3.up);
 
         // anchored posiition
-        anchoredToBottom.localPosition = Vector3.down / 2f;
-
-        // canvas scale
-        Vector3 canvasScale = renderTextureCanvas.localScale;
-        canvasScale.y = 1f / newWorldSize;
-        renderTextureCanvas.localScale = canvasScale;
+        anchoredToBottom.localPosition = Vector3.down * newWorldSize / 2f;
     }
 }
