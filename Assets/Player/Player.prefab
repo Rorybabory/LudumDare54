@@ -1277,33 +1277,12 @@ MonoBehaviour:
   airDeccel: 80
   initialStepDelay: 0.15
   stepSoundFrequency: 0.3
-  stepSound:
-    clip:
-    - {fileID: 8300000, guid: ceb2d52b7804d20449b3feb72adb8347, type: 3}
-    - {fileID: 8300000, guid: d8ac9dddce6748844afe92f7670c4fd1, type: 3}
-    - {fileID: 8300000, guid: 298f7376aed300f489b11340c60933b6, type: 3}
-    volume: 0.5
-    minPitch: 1
-    maxPitch: 1
-    sequential: 0
-    overlap: 1
-    loop: 0
+  stepSound: {fileID: 11400000, guid: 33f9fe9df53384cea8c1ee5d55d2fde2, type: 2}
   jumpHeight: 4
   jumpBoostPercent: 0.5
   gravity: 40
   maxFallSpeed: 30
-  jumpSound:
-    clip:
-    - {fileID: 8300000, guid: ed04cb511244dbe45a58f5944b198092, type: 3}
-    - {fileID: 8300000, guid: 27ece96811b935a4db5f78da69cca088, type: 3}
-    - {fileID: 8300000, guid: 9afc3aac0d24b9f4abc0774d5b659c74, type: 3}
-    - {fileID: 8300000, guid: c49666bd72345e84eba4669e046849b9, type: 3}
-    volume: 0.5
-    minPitch: 1
-    maxPitch: 1
-    sequential: 0
-    overlap: 1
-    loop: 0
+  jumpSound: {fileID: 11400000, guid: d3bbef4a3bf194c2683707394f198037, type: 2}
   maxJumps: 3
   jumpBuffer:
     threshold: 0.1
@@ -1314,15 +1293,7 @@ MonoBehaviour:
   dashCooldown: 0.5
   dashBuffer:
     threshold: 0.1
-  dashSound:
-    clip:
-    - {fileID: 8300000, guid: 456a93f0aca39414b82b2152d181fa79, type: 3}
-    volume: 0.25
-    minPitch: 1
-    maxPitch: 1
-    sequential: 0
-    overlap: 1
-    loop: 0
+  dashSound: {fileID: 11400000, guid: 9b90e231e190749c1b1ffdd8955ec7b3, type: 2}
   wallSlideAccel: 5
   cameraSensitivity: {x: 2.5, y: 2.5}
   cameraPivot: {fileID: 8338417951328117507}
@@ -1406,16 +1377,7 @@ MonoBehaviour:
   hitScanner: {fileID: 7572119920852936854}
   damageAmount: 1
   stock: {fileID: 2102882739182448231}
-  sound:
-    clip:
-    - {fileID: 8300000, guid: 9ef72c0837c0b4f4d802c6255600d1dd, type: 3}
-    - {fileID: 8300000, guid: b0c4f8f35fa83e84fb72edd0d5e2e1a1, type: 3}
-    volume: 0.1
-    minPitch: 0.95
-    maxPitch: 1.05
-    sequential: 0
-    overlap: 1
-    loop: 0
+  sound: {fileID: 11400000, guid: b8bfd0d5435a14c3491160202f0f7d81, type: 2}
 --- !u!114 &7572119920852936854
 MonoBehaviour:
   m_ObjectHideFlags: 0
